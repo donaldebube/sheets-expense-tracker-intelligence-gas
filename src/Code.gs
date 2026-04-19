@@ -18,9 +18,10 @@ function onOpen() {
     .addItem('Open Sidebar', 'showSidebar')
     .addSeparator()
     .addItem('Refresh Dashboard', 'refreshDashboard')
-    .addItem('Send Test Reminder Email', 'sendMonthlyReminderEmail')
-    .addSeparator()
+   // .addItem('Send Test Reminder Email', 'sendMonthlyReminderEmail')
+   // .addSeparator()
     .addItem('Setup Sheets (First Run)', 'setupSheets')
+    .addSeparator()
     .addItem('Schedule Monthly Reminder', 'scheduleMonthlyReminder')
     .addToUi();
 }
