@@ -8,246 +8,198 @@
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
   :root {
-    --dark: #1a1a2e;
-    --mid: #16213e;
-    --accent: #e94560;
-    --accent2: #0f3460;
-    --green: #4ade80;
-    --amber: #fbbf24;
-    --blue: #60a5fa;
-    --purple: #a78bfa;
-    --text: #e2e8f0;
-    --muted: #94a3b8;
-    --surface: #1e2a45;
-    --surface2: #243050;
-    --border: rgba(255,255,255,0.08);
-    --radius: 10px;
+    --dark: #1a1a2e; --mid: #16213e; --accent: #e94560; --accent2: #0f3460;
+    --green: #4ade80; --amber: #fbbf24; --blue: #60a5fa; --purple: #a78bfa;
+    --text: #e2e8f0; --muted: #94a3b8; --surface: #1e2a45; --surface2: #243050;
+    --border: rgba(255,255,255,0.08); --radius: 10px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--text);
+    font-size: 14px; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--dark);
-    color: var(--text);
-    font-size: 14px; /* ↑ was 13px */
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  /* ── Header ── */
-  .header {
-    background: linear-gradient(135deg, var(--mid), var(--accent2));
-    padding: 16px 20px; /* ↑ was 14px 16px */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
-  }
-  .header-title { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; } /* ↑ was 15px */
-  .header-sub   { font-size: 12px; color: var(--muted); margin-top: 2px; } /* ↑ was 10px */
-  .btn-refresh  {
-    background: rgba(255,255,255,0.1); border: 1px solid var(--border);
-    color: var(--text); padding: 7px 14px; border-radius: 6px; /* ↑ padding */
-    cursor: pointer; font-size: 13px; font-family: inherit; /* ↑ was 11px */
-  }
+  /* Header */
+  .header { background: linear-gradient(135deg, var(--mid), var(--accent2));
+    padding: 14px 18px; display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .header-title { font-size: 16px; font-weight: 700; }
+  .header-sub   { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .btn-refresh  { background: rgba(255,255,255,0.1); border: 1px solid var(--border);
+    color: var(--text); padding: 6px 12px; border-radius: 6px; cursor: pointer;
+    font-size: 12px; font-family: inherit; }
   .btn-refresh:hover { background: rgba(255,255,255,0.18); }
 
-  /* ── Month Selector ── */
-  .month-bar {
-    display: flex; gap: 10px; align-items: center;
-    padding: 12px 20px; background: var(--mid); /* ↑ padding */
-    border-bottom: 1px solid var(--border); flex-shrink: 0;
-  }
-  .month-bar select, .month-bar input {
-    background: var(--surface); border: 1px solid var(--border);
-    color: var(--text); padding: 7px 10px; border-radius: 6px; /* ↑ padding */
-    font-family: inherit; font-size: 13px; flex: 1; /* ↑ was 12px */
-  }
-  .month-bar label { font-size: 13px; color: var(--muted); white-space: nowrap; } /* ↑ was 11px */
+  /* Month Bar */
+  .month-bar { display: flex; gap: 8px; align-items: center; padding: 10px 18px;
+    background: var(--mid); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .month-bar select, .month-bar input { background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); padding: 6px 10px; border-radius: 6px; font-family: inherit; font-size: 13px; flex: 1; }
+  .month-bar label { font-size: 12px; color: var(--muted); white-space: nowrap; }
 
-  /* ── Tabs ── */
-  .tabs {
-    display: flex; background: var(--mid);
-    border-bottom: 1px solid var(--border);
-    flex-shrink: 0; overflow-x: auto;
-  }
-  .tab {
-    padding: 11px 14px; cursor: pointer; font-size: 12px; font-weight: 500; /* ↑ padding + font */
-    color: var(--muted); border-bottom: 2px solid transparent;
-    white-space: nowrap; transition: all 0.15s; flex-shrink: 0;
-  }
+  /* Tabs */
+  .tabs { display: flex; background: var(--mid); border-bottom: 1px solid var(--border);
+    flex-shrink: 0; overflow-x: auto; }
+  .tab { padding: 10px 12px; cursor: pointer; font-size: 11px; font-weight: 500;
+    color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap;
+    transition: all 0.15s; flex-shrink: 0; }
   .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
   .tab:hover:not(.active) { color: var(--text); }
 
-  /* ── Content ── */
-  .content { flex: 1; overflow-y: auto; padding: 16px 20px; } /* ↑ was 14px 16px */
-  .content::-webkit-scrollbar { width: 5px; }
-  .content::-webkit-scrollbar-track { background: transparent; }
+  /* Content */
+  .content { flex: 1; overflow-y: auto; padding: 14px 18px; }
+  .content::-webkit-scrollbar { width: 4px; }
   .content::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 4px; }
-
   .panel { display: none; }
   .panel.active { display: block; }
 
-  /* ── Form Elements ── */
-  .field { margin-bottom: 14px; } /* ↑ was 12px */
-  .field label {
-    display: block; font-size: 12px; color: var(--muted); /* ↑ was 11px */
-    margin-bottom: 6px; font-weight: 500; /* ↑ was 4px */
-  }
+  /* Forms */
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 5px; font-weight: 500; }
   .field input, .field select, .field textarea {
     width: 100%; background: var(--surface); border: 1px solid var(--border);
-    color: var(--text); padding: 10px 12px; border-radius: var(--radius); /* ↑ was 8px 10px */
-    font-family: inherit; font-size: 13px; transition: border 0.15s; /* ↑ was 12px */
-  }
-  .field input:focus, .field select:focus, .field textarea:focus {
-    outline: none; border-color: var(--accent);
-  }
-  .field textarea { resize: vertical; min-height: 60px; } /* ↑ was 52px */
+    color: var(--text); padding: 9px 11px; border-radius: var(--radius);
+    font-family: inherit; font-size: 13px; transition: border 0.15s; }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
   .field select option { background: var(--dark); }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
 
-  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } /* ↑ was 8px */
-  .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-
-  /* ── Buttons ── */
-  .btn {
-    display: inline-flex; align-items: center; gap: 6px; justify-content: center;
-    padding: 10px 16px; border-radius: var(--radius); font-family: inherit; /* ↑ was 8px 14px */
-    font-size: 13px; font-weight: 600; cursor: pointer; border: none; /* ↑ was 12px */
-    transition: all 0.15s; width: 100%; margin-top: 4px;
-  }
+  /* Buttons */
+  .btn { display: inline-flex; align-items: center; gap: 5px; justify-content: center;
+    padding: 9px 14px; border-radius: var(--radius); font-family: inherit;
+    font-size: 13px; font-weight: 600; cursor: pointer; border: none;
+    transition: all 0.15s; width: 100%; margin-top: 4px; }
   .btn-primary   { background: var(--accent); color: white; }
   .btn-primary:hover { background: #d63251; }
+  .btn-warning   { background: #d97706; color: white; }
+  .btn-warning:hover { background: #b45309; }
   .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
   .btn-secondary:hover { background: var(--surface); }
   .btn-ghost     { background: transparent; color: var(--muted); border: 1px solid var(--border); }
   .btn-danger    { background: transparent; color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
-  .btn-danger:hover  { background: rgba(248,113,113,0.1); }
-  .btn-success   { background: #166534; color: var(--green); border: 1px solid rgba(74,222,128,0.3); }
-  .btn-sm { padding: 5px 10px; font-size: 12px; width: auto; margin-top: 0; } /* ↑ was 4px 8px / 11px */
+  .btn-danger:hover { background: rgba(248,113,113,0.1); }
+  .btn-sm { padding: 4px 9px; font-size: 11px; width: auto; margin-top: 0; }
+  .btn-row { display: flex; gap: 8px; margin-top: 8px; }
 
-  .btn-row { display: flex; gap: 10px; margin-top: 10px; } /* ↑ gap + margin */
+  /* Edit mode form */
+  .edit-form {
+    background: var(--surface2); border: 1px solid var(--accent);
+    border-radius: var(--radius); padding: 14px; margin-bottom: 12px;
+    animation: slideIn 0.2s ease; }
+  @keyframes slideIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+  .edit-form-title { font-size: 12px; font-weight: 700; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+  .edit-form-actions { display: flex; gap: 8px; margin-top: 10px; }
 
-  /* ── Cards / Items ── */
-  .card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 14px; margin-bottom: 10px; /* ↑ was 12px / 8px */
-  }
-  .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
-  .card-title { font-weight: 600; font-size: 14px; } /* ↑ was 13px */
-  .card-sub   { font-size: 12px; color: var(--muted); margin-top: 2px; } /* ↑ was 11px */
-  .card-actions { display: flex; gap: 6px; }
+  /* Cards */
+  .card { background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 12px; margin-bottom: 8px; }
+  .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .card-title { font-weight: 600; font-size: 13px; }
+  .card-sub   { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .card-actions { display: flex; gap: 5px; }
 
-  /* ── KPI Mini Cards ── */
-  .kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; } /* ↑ */
-  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; } /* ↑ was 10px */
-  .kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; } /* ↑ was 10px / 4px */
-  .kpi-value { font-size: 20px; font-weight: 700; font-family: 'DM Mono', monospace; } /* ↑ was 16px */
+  /* KPI cards */
+  .kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px; }
+  .kpi-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+  .kpi-value { font-size: 18px; font-weight: 700; font-family: 'DM Mono', monospace; }
   .kpi-value.green  { color: var(--green); }
   .kpi-value.amber  { color: var(--amber); }
   .kpi-value.red    { color: #f87171; }
   .kpi-value.blue   { color: var(--blue); }
   .kpi-value.purple { color: var(--purple); }
 
-  /* ── Progress Bar ── */
-  .progress-wrap { margin-top: 6px; }
-  .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
-  .progress-bar   { height: 6px; background: var(--surface2); border-radius: 99px; overflow: hidden; } /* ↑ was 5px */
-  .progress-fill  { height: 100%; border-radius: 99px; transition: width 0.4s; }
-  .fill-green  { background: var(--green); }
-  .fill-amber  { background: var(--amber); }
-  .fill-red    { background: #f87171; }
-
-  /* ── Tag/Badge ── */
-  .badge { display: inline-block; padding: 3px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; } /* ↑ was 2px 7px / 10px */
-  .badge-fixed { background: rgba(96,165,250,0.15); color: var(--blue); }
-  .badge-variable { background: rgba(251,191,36,0.15); color: var(--amber); }
+  /* Badges */
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 99px; font-size: 10px; font-weight: 600; }
+  .badge-fixed         { background: rgba(96,165,250,0.15); color: var(--blue); }
+  .badge-variable      { background: rgba(251,191,36,0.15); color: var(--amber); }
   .badge-discretionary { background: rgba(167,139,250,0.15); color: var(--purple); }
+  .badge-add    { background: rgba(74,222,128,0.15); color: var(--green); }
+  .badge-update { background: rgba(251,191,36,0.15); color: var(--amber); }
+  .badge-delete { background: rgba(248,113,113,0.15); color: #f87171; }
 
-  /* ── Toast ── */
-  #toast {
-    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(60px);
-    background: var(--surface2); border: 1px solid var(--border);
-    color: var(--text); padding: 10px 20px; border-radius: 99px; /* ↑ was 8px 16px */
-    font-size: 13px; font-weight: 500; z-index: 9999; /* ↑ was 12px */
-    transition: transform 0.3s, opacity 0.3s; opacity: 0;
-    white-space: nowrap;
-  }
+  /* Toast */
+  #toast { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%) translateY(60px);
+    background: var(--surface2); border: 1px solid var(--border); color: var(--text);
+    padding: 8px 16px; border-radius: 99px; font-size: 12px; font-weight: 500; z-index: 9999;
+    transition: transform 0.3s, opacity 0.3s; opacity: 0; white-space: nowrap; }
   #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
   #toast.success { border-color: rgba(74,222,128,0.4); color: var(--green); }
   #toast.error   { border-color: rgba(248,113,113,0.4); color: #f87171; }
 
-  /* ── Section label ── */
-  .section-label {
-    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; /* ↑ was 10px */
-    color: var(--muted); margin: 16px 0 10px; padding-bottom: 6px; /* ↑ margins */
-    border-bottom: 1px solid var(--border);
-  }
+  /* Section label */
+  .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--muted); margin: 14px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border); }
 
-  /* ── Expense list ── */
-  .expense-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); /* ↑ was 8px 10px */
-    border-radius: 8px; margin-bottom: 8px; /* ↑ was 6px */
-  }
+  /* List items */
+  .expense-item { display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 11px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; margin-bottom: 6px; }
   .expense-item:hover { background: var(--surface2); }
   .expense-left { flex: 1; }
-  .expense-cat  { font-size: 13px; font-weight: 600; } /* ↑ was 12px */
-  .expense-desc { font-size: 12px; color: var(--muted); margin-top: 2px; } /* ↑ was 11px */
-  .expense-amt  { font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 600; color: #f87171; margin-right: 10px; } /* ↑ was 13px */
-  .expense-del  { background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px; font-size: 16px; } /* ↑ */
-  .expense-del:hover { color: #f87171; }
+  .expense-cat  { font-size: 13px; font-weight: 600; }
+  .expense-desc { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .expense-amt  { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; color: #f87171; margin: 0 8px; }
+  .item-btns    { display: flex; gap: 4px; }
+  .icon-btn     { background: none; border: none; cursor: pointer; padding: 3px 5px;
+    font-size: 13px; border-radius: 4px; color: var(--muted); transition: all 0.15s; }
+  .icon-btn:hover.edit   { background: rgba(251,191,36,0.15); color: var(--amber); }
+  .icon-btn:hover.delete { background: rgba(248,113,113,0.12); color: #f87171; }
 
-  /* ── Category item ── */
-  .cat-item {
-    display: flex; align-items: center; gap: 10px; /* ↑ was 8px */
-    padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); /* ↑ was 8px 10px */
-    border-radius: 8px; margin-bottom: 8px; /* ↑ was 6px */
-  }
-  .cat-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; } /* ↑ was 10px */
-  .cat-name { flex: 1; font-size: 13px; font-weight: 500; } /* ↑ was 12px */
-  .cat-actions { display: flex; gap: 4px; }
+  .cat-item { display: flex; align-items: center; gap: 8px; padding: 9px 11px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 6px; }
+  .cat-dot  { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .cat-name { flex: 1; font-size: 13px; font-weight: 500; }
 
-  /* ── Asset item ── */
-  .asset-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); /* ↑ */
-    border-radius: 8px; margin-bottom: 8px;
-  }
-  .asset-name  { font-size: 13px; font-weight: 600; } /* ↑ was 12px */
-  .asset-class { font-size: 11px; color: var(--muted); margin-top: 2px; } /* ↑ was 10px */
-  .asset-value { font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 600; color: var(--green); } /* ↑ was 13px */
+  .asset-item { display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 11px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; margin-bottom: 6px; }
+  .asset-name  { font-size: 13px; font-weight: 600; }
+  .asset-class { font-size: 11px; color: var(--muted); margin-top: 1px; }
+  .asset-value { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; color: var(--green); }
 
-  /* ── Chart bars ── */
-  .chart-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; } /* ↑ was 8px / 6px */
-  .chart-bar-label { width: 80px; font-size: 11px; color: var(--muted); text-align: right; flex-shrink: 0; } /* ↑ was 70px / 10px */
-  .chart-bar-wrap  { flex: 1; height: 22px; background: var(--surface2); border-radius: 4px; overflow: hidden; position: relative; } /* ↑ was 18px */
-  .chart-bar-fill  { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600; transition: width 0.5s; } /* ↑ */
-  .chart-bar-val   { width: 75px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); text-align: right; } /* ↑ was 70px / 10px */
+  /* Chart bars */
+  .chart-bar-row   { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+  .chart-bar-label { width: 78px; font-size: 10px; color: var(--muted); text-align: right; flex-shrink: 0; }
+  .chart-bar-wrap  { flex: 1; height: 20px; background: var(--surface2); border-radius: 4px; overflow: hidden; }
+  .chart-bar-fill  { height: 100%; border-radius: 4px; transition: width 0.5s; }
+  .chart-bar-val   { width: 72px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-align: right; }
+  .fill-green { background: var(--green); } .fill-amber { background: var(--amber); } .fill-red { background: #f87171; }
 
-  /* ── Empty state ── */
-  .empty { text-align: center; padding: 36px 20px; color: var(--muted); } /* ↑ was 30px */
-  .empty-icon { font-size: 38px; margin-bottom: 10px; } /* ↑ was 32px / 8px */
-  .empty-text { font-size: 13px; } /* ↑ was 12px */
+  /* Audit log */
+  .audit-item { padding: 10px 12px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; margin-bottom: 6px; }
+  .audit-head  { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .audit-time  { font-size: 10px; color: var(--muted); font-family: 'DM Mono', monospace; }
+  .audit-tab   { font-size: 10px; color: var(--muted); }
+  .audit-desc  { font-size: 12px; font-weight: 500; color: var(--text); }
+  .audit-vals  { display: flex; gap: 8px; margin-top: 5px; }
+  .audit-old   { font-size: 10px; color: #f87171; background: rgba(248,113,113,0.08);
+    padding: 2px 6px; border-radius: 4px; flex: 1; word-break: break-word; }
+  .audit-new   { font-size: 10px; color: var(--green); background: rgba(74,222,128,0.08);
+    padding: 2px 6px; border-radius: 4px; flex: 1; word-break: break-word; }
 
-  /* ── Loading ── */
-  .loading { text-align: center; padding: 24px; color: var(--muted); font-size: 13px; } /* ↑ */
+  /* Audit filters */
+  .audit-filters { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+  .filter-btn { padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 600;
+    cursor: pointer; border: 1px solid var(--border); background: var(--surface);
+    color: var(--muted); transition: all 0.15s; }
+  .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
 
-  /* Divider */
-  .divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; } /* ↑ was 12px */
-
-  /* Color swatch */
-  .color-swatch { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; } /* ↑ was 6px / 4px */
-  .swatch { width: 26px; height: 26px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; } /* ↑ was 22px */
+  /* Misc */
+  .empty  { text-align: center; padding: 30px 20px; color: var(--muted); }
+  .empty-icon { font-size: 34px; margin-bottom: 8px; }
+  .empty-text { font-size: 12px; }
+  .loading { text-align: center; padding: 20px; color: var(--muted); font-size: 12px; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+  .color-swatch { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  .swatch { width: 24px; height: 24px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; }
   .swatch.selected { border-color: white; transform: scale(1.2); }
+  .info-row { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <div class="header">
   <div>
     <div class="header-title">💰 Expense Tracker</div>
@@ -256,7 +208,6 @@
   <button class="btn-refresh" onclick="reloadOverview()">↻ Refresh</button>
 </div>
 
-<!-- Month Bar -->
 <div class="month-bar">
   <label>Month:</label>
   <select id="selMonth" onchange="onMonthChange()">
@@ -265,54 +216,44 @@
     <option>July</option><option>August</option><option>September</option>
     <option>October</option><option>November</option><option>December</option>
   </select>
-  <input type="number" id="selYear" value="2025" min="2020" max="2030" style="width:76px" onchange="onMonthChange()">
+  <input type="number" id="selYear" value="2025" min="2020" max="2035" style="width:72px" onchange="onMonthChange()">
 </div>
 
-<!-- Tabs -->
 <div class="tabs">
   <div class="tab active" onclick="switchTab('overview')">📊 Overview</div>
   <div class="tab" onclick="switchTab('expense')">➕ Expenses</div>
   <div class="tab" onclick="switchTab('budget')">📋 Budget</div>
   <div class="tab" onclick="switchTab('categories')">🏷️ Categories</div>
   <div class="tab" onclick="switchTab('assets')">💼 Assets</div>
+  <div class="tab" onclick="switchTab('audit')">🔍 Audit</div>
   <div class="tab" onclick="switchTab('settings')">⚙️ Settings</div>
 </div>
 
-<!-- Content -->
 <div class="content">
 
-  <!-- ── Overview Panel ── -->
+  <!-- OVERVIEW -->
   <div id="panel-overview" class="panel active">
-    <div id="kpiCards" class="kpi-row">
+    <div class="kpi-row">
       <div class="kpi"><div class="kpi-label">Total Spent</div><div class="kpi-value red" id="kpiSpent">—</div></div>
       <div class="kpi"><div class="kpi-label">Budgeted</div><div class="kpi-value blue" id="kpiBudget">—</div></div>
       <div class="kpi"><div class="kpi-label">Assets Total</div><div class="kpi-value purple" id="kpiAssets">—</div></div>
       <div class="kpi"><div class="kpi-label">Savings Rate</div><div class="kpi-value green" id="kpiSavings">—</div></div>
     </div>
-
-    <div class="section-label">Budget vs Actual</div>
-    <div id="budgetBars"></div>
-
-    <div class="section-label">6-Month Trend</div>
-    <div id="trendBars"></div>
-
-    <div class="section-label">Top Spending Areas</div>
-    <div id="topSpend"></div>
-
+    <div class="section-label">Budget vs Actual</div><div id="budgetBars"></div>
+    <div class="section-label">6-Month Trend</div><div id="trendBars"></div>
+    <div class="section-label">Top Spending Areas</div><div id="topSpend"></div>
     <button class="btn btn-secondary" onclick="refreshDashboard()" style="margin-top:10px">↻ Refresh Dashboard Sheet</button>
   </div>
 
-  <!-- ── Expense Panel ── -->
+  <!-- EXPENSES -->
   <div id="panel-expense" class="panel">
-    <div class="section-label">Log New Expense</div>
+    <div class="section-label" id="expFormTitle">Log New Expense</div>
+    <div id="expEditBanner" style="display:none" class="edit-form-title">✏️ Editing expense — make changes below</div>
+    <input type="hidden" id="expEditRow" value="">
     <div class="field"><label>Date</label><input type="date" id="expDate"></div>
     <div class="row-2">
-      <div class="field"><label>Category</label>
-        <select id="expCat"><option value="">Select...</option></select>
-      </div>
-      <div class="field"><label>Amount (₦)</label>
-        <input type="number" id="expAmount" placeholder="0" min="0">
-      </div>
+      <div class="field"><label>Category</label><select id="expCat"><option value="">Select...</option></select></div>
+      <div class="field"><label>Amount (₦)</label><input type="number" id="expAmount" placeholder="0" min="0"></div>
     </div>
     <div class="field"><label>Description</label><input type="text" id="expDesc" placeholder="e.g. Eko Hotel lunch"></div>
     <div class="row-2">
@@ -322,61 +263,64 @@
           <option>Credit Card</option><option>Crypto</option><option>Mobile Money</option>
         </select>
       </div>
-      <div class="field"><label>Notes (optional)</label><input type="text" id="expNotes" placeholder=""></div>
+      <div class="field"><label>Notes (optional)</label><input type="text" id="expNotes"></div>
     </div>
-    <button class="btn btn-primary" onclick="addExpense()">➕ Log Expense</button>
-
-    <div class="section-label" style="margin-top:18px">This Month's Expenses</div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="expSubmitBtn" onclick="submitExpense()" style="flex:1">➕ Log Expense</button>
+      <button class="btn btn-ghost" id="expCancelBtn" onclick="cancelExpenseEdit()" style="flex:0.4;display:none">✕ Cancel</button>
+    </div>
+    <div class="section-label" style="margin-top:16px">This Month's Expenses</div>
     <div id="expenseList"><div class="loading">Loading...</div></div>
   </div>
 
-  <!-- ── Budget Panel ── -->
+  <!-- BUDGET -->
   <div id="panel-budget" class="panel">
-    <div class="section-label">Set Budget for Selected Month</div>
-    <div class="field"><label>Category</label>
-      <select id="budCat"><option value="">Select category...</option></select>
-    </div>
+    <div class="section-label" id="budFormTitle">Set Budget</div>
+    <div id="budEditBanner" style="display:none" class="edit-form-title">✏️ Editing budget — make changes below</div>
+    <input type="hidden" id="budEditRow" value="">
+    <div class="field"><label>Category</label><select id="budCat"><option value="">Select category...</option></select></div>
     <div class="row-2">
-      <div class="field"><label>Budgeted Amount (₦)</label>
-        <input type="number" id="budAmount" placeholder="0" min="0">
-      </div>
-      <div class="field"><label>Notes (optional)</label>
-        <input type="text" id="budNotes" placeholder="">
-      </div>
+      <div class="field"><label>Budgeted Amount (₦)</label><input type="number" id="budAmount" placeholder="0" min="0"></div>
+      <div class="field"><label>Notes (optional)</label><input type="text" id="budNotes"></div>
     </div>
-    <button class="btn btn-primary" onclick="setBudget()">💾 Save Budget</button>
-
-    <div class="section-label" style="margin-top:18px">Current Budgets</div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="budSubmitBtn" onclick="submitBudget()" style="flex:1">💾 Save Budget</button>
+      <button class="btn btn-ghost" id="budCancelBtn" onclick="cancelBudgetEdit()" style="flex:0.4;display:none">✕ Cancel</button>
+    </div>
+    <div class="section-label" style="margin-top:16px">Current Budgets</div>
     <div id="budgetList"><div class="loading">Loading...</div></div>
   </div>
 
-  <!-- ── Categories Panel ── -->
+  <!-- CATEGORIES -->
   <div id="panel-categories" class="panel">
-    <div class="section-label">Add Category</div>
+    <div class="section-label" id="catFormTitle">Add Category</div>
+    <div id="catEditBanner" style="display:none" class="edit-form-title">✏️ Editing category — make changes below</div>
+    <input type="hidden" id="catEditRow" value="">
+    <input type="hidden" id="catEditOldName" value="">
     <div class="field"><label>Name</label><input type="text" id="catName" placeholder="e.g. Groceries"></div>
     <div class="row-2">
       <div class="field"><label>Icon (emoji)</label><input type="text" id="catIcon" placeholder="🛒" maxlength="4"></div>
-      <div class="field">
-        <label>Type</label>
-        <select id="catType">
-          <option>Fixed</option><option>Variable</option><option>Discretionary</option>
-        </select>
+      <div class="field"><label>Type</label>
+        <select id="catType"><option>Fixed</option><option>Variable</option><option>Discretionary</option></select>
       </div>
     </div>
-    <div class="field">
-      <label>Color</label>
+    <div class="field"><label>Color</label>
       <div class="color-swatch" id="colorSwatches"></div>
       <input type="hidden" id="catColor" value="#9E9E9E">
     </div>
-    <button class="btn btn-primary" onclick="addCategory()">➕ Add Category</button>
-
-    <div class="section-label" style="margin-top:18px">All Categories</div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="catSubmitBtn" onclick="submitCategory()" style="flex:1">➕ Add Category</button>
+      <button class="btn btn-ghost" id="catCancelBtn" onclick="cancelCategoryEdit()" style="flex:0.4;display:none">✕ Cancel</button>
+    </div>
+    <div class="section-label" style="margin-top:16px">All Categories</div>
     <div id="categoryList"><div class="loading">Loading...</div></div>
   </div>
 
-  <!-- ── Assets Panel ── -->
+  <!-- ASSETS -->
   <div id="panel-assets" class="panel">
-    <div class="section-label">Update Asset Value</div>
+    <div class="section-label" id="assFormTitle">Update Asset Value</div>
+    <div id="assEditBanner" style="display:none" class="edit-form-title">✏️ Editing asset — make changes below</div>
+    <input type="hidden" id="assEditRow" value="">
     <div class="field"><label>Asset Name</label>
       <input type="text" id="assName" placeholder="e.g. Crypto Portfolio" list="assetNameList">
       <datalist id="assetNameList"></datalist>
@@ -388,23 +332,42 @@
           <option>Property</option><option>Fixed Income</option><option>Other</option>
         </select>
       </div>
-      <div class="field"><label>Value (₦)</label>
-        <input type="number" id="assValue" placeholder="0" min="0">
-      </div>
+      <div class="field"><label>Value (₦)</label><input type="number" id="assValue" placeholder="0" min="0"></div>
     </div>
     <div class="row-2">
       <div class="field"><label>Currency</label>
         <select id="assCurrency"><option>NGN</option><option>USD</option><option>BTC</option><option>ETH</option><option>USDT</option></select>
       </div>
-      <div class="field"><label>Notes</label><input type="text" id="assNotes" placeholder=""></div>
+      <div class="field"><label>Notes</label><input type="text" id="assNotes"></div>
     </div>
-    <button class="btn btn-primary" onclick="upsertAsset()">💾 Save Asset</button>
-
-    <div class="section-label" style="margin-top:18px">Assets This Month</div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="assSubmitBtn" onclick="submitAsset()" style="flex:1">💾 Save Asset</button>
+      <button class="btn btn-ghost" id="assCancelBtn" onclick="cancelAssetEdit()" style="flex:0.4;display:none">✕ Cancel</button>
+    </div>
+    <div class="section-label" style="margin-top:16px">Assets This Month</div>
     <div id="assetList"><div class="loading">Loading...</div></div>
   </div>
 
-  <!-- ── Settings Panel ── -->
+  <!-- AUDIT -->
+  <div id="panel-audit" class="panel">
+    <div class="section-label">Change History</div>
+    <div class="audit-filters">
+      <button class="filter-btn active" onclick="filterAudit('ALL', this)">All</button>
+      <button class="filter-btn" onclick="filterAudit('ADD', this)">Added</button>
+      <button class="filter-btn" onclick="filterAudit('UPDATE', this)">Updated</button>
+      <button class="filter-btn" onclick="filterAudit('DELETE', this)">Deleted</button>
+      <button class="filter-btn" onclick="filterAudit('Expenses', this)">Expenses</button>
+      <button class="filter-btn" onclick="filterAudit('Budget', this)">Budget</button>
+      <button class="filter-btn" onclick="filterAudit('Assets', this)">Assets</button>
+    </div>
+    <div id="auditList"><div class="loading">Loading...</div></div>
+    <div class="btn-row" style="margin-top:12px">
+      <button class="btn btn-ghost" onclick="loadAudit()" style="flex:1">↻ Refresh Log</button>
+      <button class="btn btn-danger" onclick="clearAudit()" style="flex:1">🗑 Clear Log</button>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
   <div id="panel-settings" class="panel">
     <div class="section-label">Your Details</div>
     <div class="field"><label>Your Name</label><input type="text" id="setName" placeholder="Ked"></div>
@@ -420,7 +383,7 @@
     <button class="btn btn-primary" onclick="saveSettings()">💾 Save Settings</button>
     <hr class="divider">
     <div class="section-label">Email Reminders</div>
-    <p style="font-size:13px; color:var(--muted); margin-bottom:12px; line-height:1.6;">Schedule a monthly email reminder to set your budget for the next month.</p>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:10px;line-height:1.6;">Schedule a monthly email reminder to set next month's budget.</p>
     <div class="btn-row">
       <button class="btn btn-secondary" onclick="scheduleReminder()" style="flex:1">📅 Schedule Auto-Reminder</button>
       <button class="btn btn-ghost" onclick="sendTestEmail()" style="flex:1">📧 Send Test Email</button>
@@ -431,406 +394,619 @@
   </div>
 
 </div>
-
-<!-- Toast -->
 <div id="toast"></div>
 
 <script>
-  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  const COLORS = ['#f87171','#fb923c','#fbbf24','#4ade80','#34d399','#60a5fa','#818cf8','#c084fc','#f472b6','#94a3b8','#e94560','#0ea5e9'];
+const MONTHS = ['January','February','March','April','May','June',
+                'July','August','September','October','November','December'];
+const COLORS  = ['#f87171','#fb923c','#fbbf24','#4ade80','#34d399','#60a5fa',
+                 '#818cf8','#c084fc','#f472b6','#94a3b8','#e94560','#0ea5e9'];
 
-  let currentMonth, currentYear, categories = [], dashboardData = null;
+let currentMonth, currentYear, allAuditLogs = [];
 
-  window.onload = function() {
-    const now = new Date();
-    currentMonth = MONTHS[now.getMonth()];
-    currentYear  = now.getFullYear();
-    document.getElementById('selMonth').value = currentMonth;
-    document.getElementById('selYear').value  = currentYear;
-    document.getElementById('headerSub').textContent = `${currentMonth} ${currentYear}`;
-    document.getElementById('expDate').value = now.toISOString().split('T')[0];
-    buildColorSwatches();
-    loadAll();
-  };
+// Formatting helpers
+function fmt(num) {
+  // Formats to Nigerian Naira (₦) as expected by your UI
+  return new Intl.NumberFormat('en-NG', { style: 'currency', currency: 'NGN' }).format(num || 0);
+}
 
-  function loadAll() {
-    loadCategories();
-    loadExpenses();
-    loadBudgets();
-    loadAssets();
-    loadOverview();
-    loadSettings();
-  }
+function fmtShort(num) {
+  // Formats large numbers to 1.5K, 2M, etc. for the bar charts
+  const n = Number(num);
+  if (n >= 1000000) return '₦' + (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000) return '₦' + (n / 1000).toFixed(1) + 'K';
+  return '₦' + n;
+}
 
-    function onMonthChange() {
-    currentMonth = document.getElementById('selMonth').value;
-    currentYear  = parseInt(document.getElementById('selYear').value);
-    document.getElementById('headerSub').textContent = `${currentMonth} ${currentYear}`;
-    loadExpenses();
-    loadBudgets();
-    loadAssets();
-    reloadOverview(); // ← changed from loadOverview()
-    }
+function fmtDate(dateStr) {
+  if (!dateStr) return '';
+  return new Date(dateStr).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+}
 
-  function reloadOverview() {
-    document.getElementById('kpiSpent').textContent   = '…';
-    document.getElementById('kpiBudget').textContent  = '…';
-    document.getElementById('kpiAssets').textContent  = '…';
-    document.getElementById('kpiSavings').textContent = '…';
-    document.getElementById('budgetBars').innerHTML   = '<div class="loading">Loading...</div>';
-    document.getElementById('trendBars').innerHTML    = '<div class="loading">Loading...</div>';
-    document.getElementById('topSpend').innerHTML     = '<div class="loading">Loading...</div>';
-    loadOverview();
-    }
+function esc(str) {
+  // Escapes strings to prevent quotes from breaking the inline onclick handlers
+  if (!str) return '';
+  return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
 
-  function switchTab(name) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    const tabs = ['overview','expense','budget','categories','assets','settings'];
-    document.querySelectorAll('.tab')[tabs.indexOf(name)].classList.add('active');
-    document.getElementById('panel-' + name).classList.add('active');
-  }
+// ── INIT ──────────────────────────────────────────────────
+window.onload = function() {
+  const now    = new Date();
+  currentMonth = MONTHS[now.getMonth()];
+  currentYear  = now.getFullYear();
+  document.getElementById('selMonth').value = currentMonth;
+  document.getElementById('selYear').value  = currentYear;
+  document.getElementById('headerSub').textContent = `${currentMonth} ${currentYear}`;
+  document.getElementById('expDate').value  = now.toISOString().split('T')[0];
+  buildColorSwatches();
+  loadAll();
+};
 
-  function toast(msg, type = 'success') {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = 'show ' + type;
-    setTimeout(() => { t.className = ''; }, 2800);
-  }
+function loadAll() {
+  loadCategories();
+  loadExpenses();
+  loadBudgets();
+  loadAssets();
+  loadOverview();
+  loadSettings();
+}
 
-  function loadOverview() {
-    google.script.run
-      .withSuccessHandler(data => { dashboardData = data; renderOverview(data); })
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .getDashboardData(currentMonth, currentYear);
-  }
+function onMonthChange() {
+  currentMonth = document.getElementById('selMonth').value;
+  currentYear  = parseInt(document.getElementById('selYear').value);
+  document.getElementById('headerSub').textContent = `${currentMonth} ${currentYear}`;
+  loadExpenses(); loadBudgets(); loadAssets(); reloadOverview();
+}
 
-  function renderOverview(d) {
-    document.getElementById('kpiSpent').textContent   = fmt(d.totalSpent);
-    document.getElementById('kpiBudget').textContent  = fmt(d.totalBudgeted);
-    document.getElementById('kpiAssets').textContent  = fmt(d.totalAssets);
-    document.getElementById('kpiSavings').textContent = d.savingsRate + '%';
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const tabs = ['overview','expense','budget','categories','assets','audit','settings'];
+  document.querySelectorAll('.tab')[tabs.indexOf(name)].classList.add('active');
+  document.getElementById('panel-' + name).classList.add('active');
+  if (name === 'audit') loadAudit();
+}
 
-    const savEl = document.getElementById('kpiSavings');
-    savEl.className = 'kpi-value ' + (parseFloat(d.savingsRate) >= 20 ? 'green' : parseFloat(d.savingsRate) >= 10 ? 'amber' : 'red');
+// ── TOAST ─────────────────────────────────────────────────
+function toast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'show ' + type;
+  setTimeout(() => { t.className = ''; }, 3000);
+}
 
-    const bbEl = document.getElementById('budgetBars');
-    if (!d.breakdown.length) { bbEl.innerHTML = '<div class="empty"><div class="empty-text">No budget or expenses set.</div></div>'; }
-    else {
-      bbEl.innerHTML = d.breakdown.map(c => {
-        const pct = Math.min(100, (c.spent / Math.max(c.budgeted, c.spent, 1)) * 100);
-        const fillClass = c.budgeted === 0 ? 'fill-amber' : c.spent > c.budgeted ? 'fill-red' : 'fill-green';
-        const status = c.budgeted > 0 && c.spent > c.budgeted ? ' 🚨' : '';
-        return `<div class="chart-bar-row">
-          <div class="chart-bar-label">${c.icon} ${c.name.slice(0,9)}${status}</div>
-          <div class="chart-bar-wrap"><div class="chart-bar-fill ${fillClass}" style="width:${pct}%"></div></div>
-          <div class="chart-bar-val">${fmtShort(c.spent)}</div>
-        </div>`;
-      }).join('');
-    }
+// ── OVERVIEW ──────────────────────────────────────────────
+function reloadOverview() {
+  ['kpiSpent','kpiBudget','kpiAssets','kpiSavings'].forEach(id => document.getElementById(id).textContent = '…');
+  ['budgetBars','trendBars','topSpend'].forEach(id => document.getElementById(id).innerHTML = '<div class="loading">Loading...</div>');
+  loadOverview();
+}
 
-    const tEl = document.getElementById('trendBars');
-    const maxT = Math.max(...d.trend.map(t => t.total), 1);
-    tEl.innerHTML = d.trend.map(t => {
-      const pct = Math.round((t.total / maxT) * 100);
+function loadOverview() {
+  google.script.run
+    .withSuccessHandler(function(d) {
+      try { renderOverview(d); }
+      catch(err) { showOverviewError('Display error: ' + err.message); }
+    })
+    .withFailureHandler(function(e) {
+      showOverviewError((e && e.message ? e.message : String(e)) +
+        ' — try Setup Sheets from the menu first.');
+    })
+    .getDashboardData(currentMonth, currentYear);
+}
+
+function showOverviewError(msg) {
+  ['kpiSpent','kpiBudget','kpiAssets','kpiSavings']
+    .forEach(id => { document.getElementById(id).textContent = '—'; });
+  ['budgetBars','trendBars','topSpend'].forEach(id => {
+    document.getElementById(id).innerHTML =
+      '<div class="empty"><div class="empty-icon">⚠️</div>' +
+      '<div class="empty-text">' + msg + '</div></div>';
+  });
+  toast(msg, 'error');
+}
+
+function renderOverview(d) {
+  if (!d) { showOverviewError('No data returned from server.'); return; }
+  if (d.error) { showOverviewError(d.error); return; }
+
+  document.getElementById('kpiSpent').textContent   = fmt(d.totalSpent);
+  document.getElementById('kpiBudget').textContent  = fmt(d.totalBudgeted);
+  document.getElementById('kpiAssets').textContent  = fmt(d.totalAssets);
+  document.getElementById('kpiSavings').textContent = d.savingsRate + '%';
+  const s = document.getElementById('kpiSavings');
+  s.className = 'kpi-value ' + (parseFloat(d.savingsRate) >= 20 ? 'green'
+                               : parseFloat(d.savingsRate) >= 10 ? 'amber' : 'red');
+
+  const bbEl = document.getElementById('budgetBars');
+  if (!d.breakdown || !d.breakdown.length) {
+    bbEl.innerHTML = '<div class="empty"><div class="empty-text">No budget or expenses set for this month.</div></div>';
+  } else {
+    bbEl.innerHTML = d.breakdown.map(c => {
+      const pct = Math.min(100, (c.spent / Math.max(c.budgeted, c.spent, 1)) * 100);
+      const cls = c.budgeted === 0 ? 'fill-amber' : c.spent > c.budgeted ? 'fill-red' : 'fill-green';
+      const ovr = c.budgeted > 0 && c.spent > c.budgeted ? ' 🚨' : '';
       return `<div class="chart-bar-row">
-        <div class="chart-bar-label">${t.label}</div>
-        <div class="chart-bar-wrap"><div class="chart-bar-fill fill-amber" style="width:${pct}%"></div></div>
-        <div class="chart-bar-val">${fmtShort(t.total)}</div>
-      </div>`;
+        <div class="chart-bar-label">${c.icon} ${c.name.slice(0,9)}${ovr}</div>
+        <div class="chart-bar-wrap"><div class="chart-bar-fill ${cls}" style="width:${pct}%"></div></div>
+        <div class="chart-bar-val">${fmtShort(c.spent)}</div></div>`;
     }).join('');
-
-    const tsEl = document.getElementById('topSpend');
-    if (!d.topSpends.length) { tsEl.innerHTML = '<div class="empty"><div class="empty-text">No expenses this month.</div></div>'; }
-    else {
-      const maxS = Math.max(...d.topSpends.map(s => s.amount), 1);
-      tsEl.innerHTML = d.topSpends.map((s, i) => {
-        const pct = Math.round((s.amount / maxS) * 100);
-        const medals = ['🥇','🥈','🥉','4️⃣','5️⃣'];
-        return `<div class="chart-bar-row">
-          <div class="chart-bar-label">${medals[i]} ${s.category.slice(0,8)}</div>
-          <div class="chart-bar-wrap"><div class="chart-bar-fill fill-red" style="width:${pct}%"></div></div>
-          <div class="chart-bar-val">${fmtShort(s.amount)}</div>
-        </div>`;
-      }).join('');
-    }
   }
 
-  function refreshDashboard() {
-    toast('Refreshing dashboard sheet…');
-    google.script.run
-      .withSuccessHandler(() => { toast('Dashboard refreshed!'); loadOverview(); })
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .refreshDashboard();
-  }
+  const maxT = Math.max(...(d.trend || []).map(t => t.total), 1);
+  document.getElementById('trendBars').innerHTML = (d.trend || []).map(t => {
+    const pct = Math.round((t.total / maxT) * 100);
+    return `<div class="chart-bar-row">
+      <div class="chart-bar-label">${t.label}</div>
+      <div class="chart-bar-wrap"><div class="chart-bar-fill fill-amber" style="width:${pct}%"></div></div>
+      <div class="chart-bar-val">${fmtShort(t.total)}</div></div>`;
+  }).join('');
 
-  function loadExpenses() {
-    google.script.run
-      .withSuccessHandler(data => renderExpenses(data))
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .getExpensesForMonth(currentMonth, currentYear);
+  const tsEl = document.getElementById('topSpend');
+  if (!d.topSpends || !d.topSpends.length) {
+    tsEl.innerHTML = '<div class="empty"><div class="empty-text">No expenses this month.</div></div>';
+  } else {
+    const maxS = Math.max(...d.topSpends.map(s => s.amount), 1);
+    const medals = ['🥇','🥈','🥉','4️⃣','5️⃣'];
+    tsEl.innerHTML = d.topSpends.map((s, i) => {
+      const pct = Math.round((s.amount / maxS) * 100);
+      return `<div class="chart-bar-row">
+        <div class="chart-bar-label">${medals[i]} ${s.category.slice(0,8)}</div>
+        <div class="chart-bar-wrap"><div class="chart-bar-fill fill-red" style="width:${pct}%"></div></div>
+        <div class="chart-bar-val">${fmtShort(s.amount)}</div></div>`;
+    }).join('');
   }
+}
 
-  function renderExpenses(list) {
-    const el = document.getElementById('expenseList');
-    if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">🧾</div><div class="empty-text">No expenses yet.</div></div>'; return; }
-    const total = list.reduce((s,e) => s + Number(e.amount), 0);
-    el.innerHTML = `<div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Total: <strong style="color:var(--text)">${fmt(total)}</strong> · ${list.length} entries</div>` +
-      list.sort((a,b) => new Date(b.date) - new Date(a.date)).map(e =>
-        `<div class="expense-item">
-          <div class="expense-left">
-            <div class="expense-cat">${e.category}</div>
-            <div class="expense-desc">${e.description || ''} · ${fmtDate(e.date)}</div>
-          </div>
-          <div class="expense-amt">−${fmt(e.amount)}</div>
-          <button class="expense-del" onclick="deleteExpense(${e.row})" title="Delete">✕</button>
-        </div>`
-      ).join('');
-  }
+function refreshDashboard() {
+  toast('Refreshing dashboard sheet…');
+  google.script.run.withSuccessHandler(() => { toast('Dashboard refreshed!'); loadOverview(); })
+    .withFailureHandler(e => toast(e.message,'error'))
+    .refreshDashboard(currentMonth, currentYear);
+}
 
-  function addExpense() {
-    const date = document.getElementById('expDate').value;
-    const cat  = document.getElementById('expCat').value;
-    const amt  = document.getElementById('expAmount').value;
-    const desc = document.getElementById('expDesc').value;
-    if (!date || !cat || !amt) { toast('Date, category & amount required', 'error'); return; }
-    google.script.run
-      .withSuccessHandler(r => { toast(r.message); loadExpenses(); loadOverview(); clearExpenseForm(); })
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .addExpense(date, cat, desc, Number(amt), document.getElementById('expPayment').value, document.getElementById('expNotes').value);
-  }
+// ── EXPENSES ──────────────────────────────────────────────
+function loadExpenses() {
+  google.script.run.withSuccessHandler(renderExpenses)
+    .withFailureHandler(e => toast(e.message,'error'))
+    .getExpensesForMonth(currentMonth, currentYear);
+}
 
-  function deleteExpense(row) {
-    if (!confirm('Delete this expense?')) return;
-    google.script.run
-      .withSuccessHandler(r => { toast(r.message); loadExpenses(); loadOverview(); })
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .deleteExpense(row);
-  }
-
-  function clearExpenseForm() {
-    document.getElementById('expAmount').value = '';
-    document.getElementById('expDesc').value   = '';
-    document.getElementById('expNotes').value  = '';
-    document.getElementById('expCat').value    = '';
-  }
-
-  function loadBudgets() {
-    google.script.run
-      .withSuccessHandler(data => renderBudgets(data))
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .getBudgetsForMonth(currentMonth, currentYear);
-  }
-
-  function renderBudgets(list) {
-    const el = document.getElementById('budgetList');
-    if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">📋</div><div class="empty-text">No budgets set for this month.</div></div>'; return; }
-    el.innerHTML = list.map(b =>
-      `<div class="card">
-        <div class="card-head">
-          <div><div class="card-title">${b.category}</div><div class="card-sub">${b.notes || ''}</div></div>
-          <div class="card-actions">
-            <button class="btn btn-danger btn-sm" onclick="deleteBudget('${b.category}')">✕</button>
-          </div>
+function renderExpenses(list) {
+  const el = document.getElementById('expenseList');
+  if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">🧾</div><div class="empty-text">No expenses yet.</div></div>'; return; }
+  const total = list.reduce((s,e) => s+Number(e.amount),0);
+  el.innerHTML = `<div class="info-row"><span>${list.length} entries</span><span style="color:var(--text);font-weight:600">${fmt(total)}</span></div>` +
+    list.sort((a,b)=>new Date(b.date)-new Date(a.date)).map(e =>
+      `<div class="expense-item">
+        <div class="expense-left">
+          <div class="expense-cat">${e.category}</div>
+          <div class="expense-desc">${e.description||''} · ${fmtDate(e.date)} · ${e.paymentMethod||''}</div>
         </div>
-        <div style="font-family:'DM Mono',monospace;font-size:17px;font-weight:700;color:var(--blue)">${fmt(b.amount)}</div>
-      </div>`
-    ).join('');
-  }
-
-  function setBudget() {
-    const cat = document.getElementById('budCat').value;
-    const amt = document.getElementById('budAmount').value;
-    if (!cat || !amt) { toast('Category & amount required', 'error'); return; }
-    google.script.run
-      .withSuccessHandler(r => { toast(r.message); loadBudgets(); loadOverview(); document.getElementById('budAmount').value=''; document.getElementById('budNotes').value=''; })
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .setBudget(currentMonth, currentYear, cat, Number(amt), document.getElementById('budNotes').value);
-  }
-
-  function deleteBudget(cat) {
-    if (!confirm(`Delete budget for ${cat}?`)) return;
-    google.script.run
-      .withSuccessHandler(r => { toast(r.message); loadBudgets(); loadOverview(); })
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .deleteBudget(currentMonth, currentYear, cat);
-  }
-
-  function loadCategories() {
-    google.script.run
-      .withSuccessHandler(data => { categories = data; renderCategories(data); populateCategoryDropdowns(data); })
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .getCategories();
-  }
-
-  function renderCategories(list) {
-    const el = document.getElementById('categoryList');
-    if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-text">No categories yet.</div></div>'; return; }
-    el.innerHTML = list.map(c =>
-      `<div class="cat-item">
-        <div class="cat-dot" style="background:${c.color}"></div>
-        <div style="font-size:18px">${c.icon}</div>
-        <div class="cat-name">${c.name}</div>
-        <span class="badge badge-${c.type.toLowerCase()}">${c.type}</span>
-        <div class="cat-actions">
-          <button class="btn btn-danger btn-sm" onclick="deleteCategory('${c.name}')">✕</button>
+        <div class="expense-amt">−${fmt(e.amount)}</div>
+        <div class="item-btns">
+          <button class="icon-btn edit" onclick="editExpense(${e.row},'${esc(e.date)}','${esc(e.category)}','${esc(e.description)}',${e.amount},'${esc(e.paymentMethod)}','${esc(e.notes)}')" title="Edit">✏️</button>
+          <button class="icon-btn delete" onclick="deleteExpense(${e.row})" title="Delete">🗑</button>
         </div>
       </div>`
     ).join('');
-  }
+}
 
-  function populateCategoryDropdowns(list) {
-    ['expCat','budCat'].forEach(id => {
-      const sel = document.getElementById(id);
-      const cur = sel.value;
-      sel.innerHTML = '<option value="">Select category...</option>' +
-        list.map(c => `<option value="${c.name}" ${c.name===cur?'selected':''}>${c.icon} ${c.name}</option>`).join('');
-    });
-  }
+function editExpense(row, date, category, description, amount, paymentMethod, notes) {
+  document.getElementById('expEditRow').value = row;
+  document.getElementById('expDate').value    = new Date(date).toISOString().split('T')[0];
+  document.getElementById('expCat').value     = category;
+  document.getElementById('expAmount').value  = amount;
+  document.getElementById('expDesc').value    = description;
+  document.getElementById('expPayment').value = paymentMethod;
+  document.getElementById('expNotes').value   = notes;
+  document.getElementById('expFormTitle').textContent   = '✏️ Edit Expense';
+  document.getElementById('expEditBanner').style.display= 'block';
+  document.getElementById('expSubmitBtn').textContent   = '💾 Update Expense';
+  document.getElementById('expSubmitBtn').className     = 'btn btn-warning';
+  document.getElementById('expCancelBtn').style.display = 'flex';
+  document.getElementById('panel-expense').scrollTop    = 0;
+}
 
-  function addCategory() {
-    const name = document.getElementById('catName').value.trim();
-    const icon = document.getElementById('catIcon').value.trim() || '📦';
-    const type = document.getElementById('catType').value;
-    const color= document.getElementById('catColor').value;
-    if (!name) { toast('Name required', 'error'); return; }
-    google.script.run
-      .withSuccessHandler(r => { toast(r.message, r.success ? 'success' : 'error'); if(r.success){ loadCategories(); document.getElementById('catName').value=''; document.getElementById('catIcon').value=''; } })
+function cancelExpenseEdit() {
+  document.getElementById('expEditRow').value = '';
+  document.getElementById('expFormTitle').textContent   = 'Log New Expense';
+  document.getElementById('expEditBanner').style.display= 'none';
+  document.getElementById('expSubmitBtn').textContent   = '➕ Log Expense';
+  document.getElementById('expSubmitBtn').className     = 'btn btn-primary';
+  document.getElementById('expCancelBtn').style.display = 'none';
+  clearExpenseForm();
+}
+
+function submitExpense() {
+  const row  = document.getElementById('expEditRow').value;
+  const date = document.getElementById('expDate').value;
+  const cat  = document.getElementById('expCat').value;
+  const amt  = document.getElementById('expAmount').value;
+  const desc = document.getElementById('expDesc').value;
+  const pay  = document.getElementById('expPayment').value;
+  const notes= document.getElementById('expNotes').value;
+  if (!date||!cat||!amt) { toast('Date, category & amount required','error'); return; }
+  if (row) {
+    google.script.run.withSuccessHandler(r => { toast(r.message); cancelExpenseEdit(); loadExpenses(); reloadOverview(); })
+      .withFailureHandler(e => toast(e.message,'error'))
+      .updateExpense(Number(row), date, cat, desc, Number(amt), pay, notes);
+} else {
+    // Submitting a NEW expense
+    google.script.run.withSuccessHandler(r => { 
+        toast('Expense logged successfully!'); 
+        cancelExpenseEdit(); 
+        loadExpenses(); 
+        reloadOverview(); 
+      })
       .withFailureHandler(e => toast(e.message, 'error'))
+      .addExpense(date, cat, desc, Number(amt), pay, notes); // Make sure "addExpense" matches your Code.gs function name
+  }
+}
+
+function deleteExpense(row) {
+  if (!confirm('Delete this expense?')) return;
+  google.script.run.withSuccessHandler(r => { toast(r.message); loadExpenses(); reloadOverview(); })
+    .withFailureHandler(e => toast(e.message,'error')).deleteExpense(row);
+}
+
+function clearExpenseForm() {
+  ['expAmount','expDesc','expNotes'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('expCat').value = '';
+}
+
+// ── BUDGET ────────────────────────────────────────────────
+function loadBudgets() {
+  google.script.run.withSuccessHandler(renderBudgets)
+    .withFailureHandler(e => toast(e.message,'error'))
+    .getBudgetsForMonthWithRows(currentMonth, currentYear);
+}
+
+function renderBudgets(list) {
+  const el = document.getElementById('budgetList');
+  if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">📋</div><div class="empty-text">No budgets set for this month.</div></div>'; return; }
+  el.innerHTML = list.map(b =>
+    `<div class="card">
+      <div class="card-head">
+        <div><div class="card-title">${b.category}</div><div class="card-sub">${b.notes||''}</div></div>
+        <div class="card-actions">
+          <button class="icon-btn edit" onclick="editBudget(${b.row},'${esc(b.category)}',${b.amount},'${esc(b.notes)}')" title="Edit">✏️</button>
+          <button class="icon-btn delete" onclick="deleteBudget('${esc(b.category)}')" title="Delete">🗑</button>
+        </div>
+      </div>
+      <div style="font-family:'DM Mono',monospace;font-size:16px;font-weight:700;color:var(--blue)">${fmt(b.amount)}</div>
+    </div>`
+  ).join('');
+}
+
+function editBudget(row, category, amount, notes) {
+  document.getElementById('budEditRow').value = row;
+  document.getElementById('budCat').value     = category;
+  document.getElementById('budAmount').value  = amount;
+  document.getElementById('budNotes').value   = notes;
+  document.getElementById('budFormTitle').textContent   = '✏️ Edit Budget';
+  document.getElementById('budEditBanner').style.display= 'block';
+  document.getElementById('budSubmitBtn').textContent   = '💾 Update Budget';
+  document.getElementById('budSubmitBtn').className     = 'btn btn-warning';
+  document.getElementById('budCancelBtn').style.display = 'flex';
+  document.getElementById('panel-budget').scrollTop     = 0;
+}
+
+function cancelBudgetEdit() {
+  document.getElementById('budEditRow').value = '';
+  document.getElementById('budFormTitle').textContent    = 'Set Budget';
+  document.getElementById('budEditBanner').style.display = 'none';
+  document.getElementById('budSubmitBtn').textContent    = '💾 Save Budget';
+  document.getElementById('budSubmitBtn').className      = 'btn btn-primary';
+  document.getElementById('budCancelBtn').style.display  = 'none';
+  document.getElementById('budAmount').value = '';
+  document.getElementById('budNotes').value  = '';
+  document.getElementById('budCat').value    = '';
+}
+
+function submitBudget() {
+  const row  = document.getElementById('budEditRow').value;
+  const cat  = document.getElementById('budCat').value;
+  const amt  = document.getElementById('budAmount').value;
+  const notes= document.getElementById('budNotes').value;
+  if (!cat||!amt) { toast('Category & amount required','error'); return; }
+  if (row) {
+    google.script.run.withSuccessHandler(r => { toast(r.message); cancelBudgetEdit(); loadBudgets(); reloadOverview(); })
+      .withFailureHandler(e => toast(e.message,'error'))
+      .updateBudget(Number(row), currentMonth, currentYear, cat, Number(amt), notes);
+  } else {
+    google.script.run.withSuccessHandler(r => { toast(r.message); cancelBudgetEdit(); loadBudgets(); reloadOverview(); })
+      .withFailureHandler(e => toast(e.message,'error'))
+      .setBudget(currentMonth, currentYear, cat, Number(amt), notes);
+  }
+}
+
+function deleteBudget(cat) {
+  if (!confirm(`Delete budget for ${cat}?`)) return;
+  google.script.run.withSuccessHandler(r => { toast(r.message); loadBudgets(); reloadOverview(); })
+    .withFailureHandler(e => toast(e.message,'error'))
+    .deleteBudget(currentMonth, currentYear, cat);
+}
+
+// ── CATEGORIES ────────────────────────────────────────────
+function loadCategories() {
+  google.script.run.withSuccessHandler(data => { renderCategories(data); populateCategoryDropdowns(data); })
+    .withFailureHandler(e => toast(e.message,'error')).getCategories();
+}
+
+function renderCategories(list) {
+  const el = document.getElementById('categoryList');
+  if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-text">No categories yet.</div></div>'; return; }
+  el.innerHTML = list.map(c =>
+    `<div class="cat-item">
+      <div class="cat-dot" style="background:${c.color}"></div>
+      <div style="font-size:17px">${c.icon}</div>
+      <div class="cat-name">${c.name}</div>
+      <span class="badge badge-${c.type.toLowerCase()}">${c.type}</span>
+      <div class="item-btns">
+        <button class="icon-btn edit" onclick="editCategory(${c.row},'${esc(c.name)}','${esc(c.icon)}','${esc(c.color)}','${esc(c.type)}')" title="Edit">✏️</button>
+        <button class="icon-btn delete" onclick="deleteCategory('${esc(c.name)}')" title="Delete">🗑</button>
+      </div>
+    </div>`
+  ).join('');
+}
+
+function editCategory(row, name, icon, color, type) {
+  document.getElementById('catEditRow').value     = row;
+  document.getElementById('catEditOldName').value = name;
+  document.getElementById('catName').value  = name;
+  document.getElementById('catIcon').value  = icon;
+  document.getElementById('catType').value  = type;
+  document.getElementById('catColor').value = color;
+  document.querySelectorAll('.swatch').forEach(s => {
+    s.classList.toggle('selected', s.style.background === color || s.getAttribute('data-color') === color);
+  });
+  document.getElementById('catFormTitle').textContent   = '✏️ Edit Category';
+  document.getElementById('catEditBanner').style.display= 'block';
+  document.getElementById('catSubmitBtn').textContent   = '💾 Update Category';
+  document.getElementById('catSubmitBtn').className     = 'btn btn-warning';
+  document.getElementById('catCancelBtn').style.display = 'flex';
+  document.getElementById('panel-categories').scrollTop = 0;
+}
+
+function cancelCategoryEdit() {
+  document.getElementById('catEditRow').value     = '';
+  document.getElementById('catEditOldName').value = '';
+  document.getElementById('catFormTitle').textContent    = 'Add Category';
+  document.getElementById('catEditBanner').style.display = 'none';
+  document.getElementById('catSubmitBtn').textContent    = '➕ Add Category';
+  document.getElementById('catSubmitBtn').className      = 'btn btn-primary';
+  document.getElementById('catCancelBtn').style.display  = 'none';
+  ['catName','catIcon'].forEach(id => document.getElementById(id).value='');
+}
+
+function submitCategory() {
+  const row     = document.getElementById('catEditRow').value;
+  const oldName = document.getElementById('catEditOldName').value;
+  const name    = document.getElementById('catName').value.trim();
+  const icon    = document.getElementById('catIcon').value.trim() || '📦';
+  const type    = document.getElementById('catType').value;
+  const color   = document.getElementById('catColor').value;
+  if (!name) { toast('Name required','error'); return; }
+  if (row) {
+    google.script.run.withSuccessHandler(r => { toast(r.message, r.success?'success':'error'); if(r.success){cancelCategoryEdit();loadCategories();} })
+      .withFailureHandler(e => toast(e.message,'error'))
+      .updateCategory(Number(row), oldName, name, icon, color, type);
+  } else {
+    google.script.run.withSuccessHandler(r => { toast(r.message, r.success?'success':'error'); if(r.success){cancelCategoryEdit();loadCategories();} })
+      .withFailureHandler(e => toast(e.message,'error'))
       .addCategory(name, icon, color, type);
   }
+}
 
-  function deleteCategory(name) {
-    if (!confirm(`Delete category "${name}"?`)) return;
-    google.script.run
-      .withSuccessHandler(r => { toast(r.message); loadCategories(); })
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .deleteCategory(name);
-  }
+function deleteCategory(name) {
+  if (!confirm(`Delete category "${name}"?`)) return;
+  google.script.run.withSuccessHandler(r => { toast(r.message); loadCategories(); })
+    .withFailureHandler(e => toast(e.message,'error')).deleteCategory(name);
+}
 
-  function loadAssets() {
-    google.script.run
-      .withSuccessHandler(data => renderAssets(data))
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .getAssetsForMonth(currentMonth, currentYear);
-    google.script.run.withSuccessHandler(names => {
-      const dl = document.getElementById('assetNameList');
-      dl.innerHTML = names.map(n => `<option value="${n}">`).join('');
-    }).getAllAssetNames();
-  }
+function populateCategoryDropdowns(list) {
+  ['expCat','budCat'].forEach(id => {
+    const sel = document.getElementById(id);
+    const cur = sel.value;
+    sel.innerHTML = '<option value="">Select category...</option>' +
+      list.map(c => `<option value="${c.name}" ${c.name===cur?'selected':''}>${c.icon} ${c.name}</option>`).join('');
+  });
+}
 
-  function renderAssets(list) {
-    const el = document.getElementById('assetList');
-    if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">💼</div><div class="empty-text">No assets recorded for this month.</div></div>'; return; }
-    const total = list.reduce((s,a) => s + Number(a.value), 0);
-    el.innerHTML = `<div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Portfolio: <strong style="color:var(--green)">${fmt(total)}</strong></div>` +
-      list.map(a =>
-        `<div class="asset-item">
-          <div>
-            <div class="asset-name">${a.assetName}</div>
-            <div class="asset-class">${a.assetClass} · ${a.currency}</div>
+// ── ASSETS ────────────────────────────────────────────────
+function loadAssets() {
+  google.script.run.withSuccessHandler(renderAssets)
+    .withFailureHandler(e => toast(e.message,'error'))
+    .getAssetsForMonth(currentMonth, currentYear);
+  google.script.run.withSuccessHandler(names => {
+    document.getElementById('assetNameList').innerHTML = names.map(n=>`<option value="${n}">`).join('');
+  }).getAllAssetNames();
+}
+
+function renderAssets(list) {
+  const el = document.getElementById('assetList');
+  if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">💼</div><div class="empty-text">No assets recorded for this month.</div></div>'; return; }
+  const total = list.reduce((s,a)=>s+Number(a.value),0);
+  el.innerHTML = `<div class="info-row"><span>${list.length} assets</span><span style="color:var(--green);font-weight:600">${fmt(total)}</span></div>` +
+    list.map(a =>
+      `<div class="asset-item">
+        <div>
+          <div class="asset-name">${a.assetName}</div>
+          <div class="asset-class">${a.assetClass} · ${a.currency}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="asset-value">${fmt(a.value)}</div>
+          <div class="item-btns">
+            <button class="icon-btn edit" onclick="editAsset(${a.row},'${esc(a.assetName)}','${esc(a.assetClass)}',${a.value},'${esc(a.currency)}','${esc(a.notes)}')" title="Edit">✏️</button>
+            <button class="icon-btn delete" onclick="deleteAsset(${a.row})" title="Delete">🗑</button>
           </div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <div class="asset-value">${fmt(a.value)}</div>
-            <button class="expense-del" onclick="deleteAsset(${a.row})" title="Delete">✕</button>
-          </div>
-        </div>`
-      ).join('');
-  }
+        </div>
+      </div>`
+    ).join('');
+}
 
-  function upsertAsset() {
-    const name  = document.getElementById('assName').value.trim();
-    const cls   = document.getElementById('assClass').value;
-    const val   = document.getElementById('assValue').value;
-    const cur   = document.getElementById('assCurrency').value;
-    const notes = document.getElementById('assNotes').value;
-    if (!name || !val) { toast('Name & value required', 'error'); return; }
-    google.script.run
-      .withSuccessHandler(r => { toast(r.message); loadAssets(); loadOverview(); document.getElementById('assName').value=''; document.getElementById('assValue').value=''; })
-      .withFailureHandler(e => toast(e.message, 'error'))
+function editAsset(row, name, cls, value, currency, notes) {
+  document.getElementById('assEditRow').value   = row;
+  document.getElementById('assName').value      = name;
+  document.getElementById('assClass').value     = cls;
+  document.getElementById('assValue').value     = value;
+  document.getElementById('assCurrency').value  = currency;
+  document.getElementById('assNotes').value     = notes;
+  document.getElementById('assFormTitle').textContent   = '✏️ Edit Asset';
+  document.getElementById('assEditBanner').style.display= 'block';
+  document.getElementById('assSubmitBtn').textContent   = '💾 Update Asset';
+  document.getElementById('assSubmitBtn').className     = 'btn btn-warning';
+  document.getElementById('assCancelBtn').style.display = 'flex';
+  document.getElementById('panel-assets').scrollTop     = 0;
+}
+
+function cancelAssetEdit() {
+  document.getElementById('assEditRow').value = '';
+  document.getElementById('assFormTitle').textContent    = 'Update Asset Value';
+  document.getElementById('assEditBanner').style.display = 'none';
+  document.getElementById('assSubmitBtn').textContent    = '💾 Save Asset';
+  document.getElementById('assSubmitBtn').className      = 'btn btn-primary';
+  document.getElementById('assCancelBtn').style.display  = 'none';
+  ['assName','assValue','assNotes'].forEach(id=>document.getElementById(id).value='');
+}
+
+function submitAsset() {
+  const row   = document.getElementById('assEditRow').value;
+  const name  = document.getElementById('assName').value.trim();
+  const cls   = document.getElementById('assClass').value;
+  const val   = document.getElementById('assValue').value;
+  const cur   = document.getElementById('assCurrency').value;
+  const notes = document.getElementById('assNotes').value;
+  if (!name||!val) { toast('Name & value required','error'); return; }
+  if (row) {
+    google.script.run.withSuccessHandler(r => { toast(r.message); cancelAssetEdit(); loadAssets(); reloadOverview(); })
+      .withFailureHandler(e => toast(e.message,'error'))
+      .updateAsset(Number(row), currentMonth, currentYear, name, cls, Number(val), cur, notes);
+  } else {
+    google.script.run.withSuccessHandler(r => { toast(r.message); cancelAssetEdit(); loadAssets(); reloadOverview(); })
+      .withFailureHandler(e => toast(e.message,'error'))
       .upsertAsset(currentMonth, currentYear, name, cls, Number(val), cur, notes);
   }
+}
 
-  function deleteAsset(row) {
-    if (!confirm('Delete this asset entry?')) return;
-    google.script.run
-      .withSuccessHandler(r => { toast(r.message); loadAssets(); loadOverview(); })
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .deleteAsset(row);
-  }
+function deleteAsset(row) {
+  if (!confirm('Delete this asset entry?')) return;
+  google.script.run.withSuccessHandler(r => { toast(r.message); loadAssets(); reloadOverview(); })
+    .withFailureHandler(e => toast(e.message,'error')).deleteAsset(row);
+}
 
-  function loadSettings() {
-    google.script.run.withSuccessHandler(s => {
-      document.getElementById('setEmail').value    = s['Email'] || '';
-      document.getElementById('setCurrency').value = s['Currency'] || '₦';
-      document.getElementById('setRemDay').value   = s['Reminder Day'] || '25';
-      document.getElementById('setName').value     = s['Name'] || '';
-    }).withFailureHandler(e => {}).getSettings();
-  }
+// ── AUDIT ─────────────────────────────────────────────────
+function loadAudit() {
+  document.getElementById('auditList').innerHTML = '<div class="loading">Loading...</div>';
+  google.script.run.withSuccessHandler(logs => { allAuditLogs = logs; renderAudit(logs); })
+    .withFailureHandler(e => toast(e.message,'error')).getAuditLog();
+}
 
-  function saveSettings() {
-    google.script.run
-      .withSuccessHandler(r => toast(r.message))
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .saveSettings(
-        document.getElementById('setEmail').value,
-        document.getElementById('setCurrency').value,
-        document.getElementById('setRemDay').value,
-        document.getElementById('setName').value
-      );
-  }
+function filterAudit(filter, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = filter === 'ALL' ? allAuditLogs :
+    allAuditLogs.filter(l => l.action === filter || l.tab === filter);
+  renderAudit(filtered);
+}
 
-  function scheduleReminder() {
-    google.script.run
-      .withSuccessHandler(r => toast(r.message))
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .scheduleMonthlyReminder();
-  }
+function renderAudit(logs) {
+  const el = document.getElementById('auditList');
+  if (!logs.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div><div class="empty-text">No changes recorded yet.</div></div>'; return; }
+  el.innerHTML = `<div class="info-row"><span>${logs.length} entries</span></div>` +
+    logs.map(l => {
+      const badgeCls = l.action==='ADD'?'badge-add':l.action==='DELETE'?'badge-delete':'badge-update';
+      const vals = (l.oldValue||l.newValue) ?
+        `<div class="audit-vals">
+          ${l.oldValue ? `<div class="audit-old">Before: ${l.oldValue}</div>` : ''}
+          ${l.newValue ? `<div class="audit-new">After: ${l.newValue}</div>`  : ''}
+        </div>` : '';
+      return `<div class="audit-item">
+        <div class="audit-head">
+          <span class="badge ${badgeCls}">${l.action}</span>
+          <span class="audit-tab">${l.tab}</span>
+          <span class="audit-time">${l.timestamp}</span>
+        </div>
+        <div class="audit-desc">${l.description}</div>
+        ${vals}
+      </div>`;
+    }).join('');
+}
 
-  function sendTestEmail() {
-    toast('Sending test email…');
-    google.script.run
-      .withSuccessHandler(r => toast(r.message))
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .sendMonthlyReminderEmail();
-  }
+function clearAudit() {
+  if (!confirm('Clear the entire audit log? This cannot be undone.')) return;
+  google.script.run.withSuccessHandler(r => { toast(r.message); allAuditLogs=[]; renderAudit([]); })
+    .withFailureHandler(e => toast(e.message,'error')).clearAuditLog();
+}
 
-  function runSetup() {
-    if (!confirm('This will create/verify all sheets. Continue?')) return;
-    toast('Setting up sheets…');
-    google.script.run
-      .withSuccessHandler(() => toast('Setup complete!'))
-      .withFailureHandler(e => toast(e.message, 'error'))
-      .setupSheets();
-  }
+// ── SETTINGS ──────────────────────────────────────────────
+function loadSettings() {
+  google.script.run.withSuccessHandler(s => {
+    document.getElementById('setEmail').value    = s['Email']        || '';
+    document.getElementById('setCurrency').value = s['Currency']     || '₦';
+    document.getElementById('setRemDay').value   = s['Reminder Day'] || '25';
+    document.getElementById('setName').value     = s['Name']         || '';
+  }).withFailureHandler(()=>{}).getSettings();
+}
 
-  function buildColorSwatches() {
-    const el = document.getElementById('colorSwatches');
-    el.innerHTML = COLORS.map(c =>
-      `<div class="swatch ${c==='#9E9E9E'?'selected':''}" style="background:${c}" onclick="selectColor('${c}', this)"></div>`
-    ).join('');
-  }
+function saveSettings() {
+  google.script.run.withSuccessHandler(r => toast(r.message))
+    .withFailureHandler(e => toast(e.message,'error'))
+    .saveSettings(document.getElementById('setEmail').value,
+      document.getElementById('setCurrency').value,
+      document.getElementById('setRemDay').value,
+      document.getElementById('setName').value);
+}
 
-  function selectColor(color, el) {
-    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
-    el.classList.add('selected');
-    document.getElementById('catColor').value = color;
-  }
+function scheduleReminder() {
+  google.script.run.withSuccessHandler(r => toast(r.message))
+    .withFailureHandler(e => toast(e.message,'error')).scheduleMonthlyReminder();
+}
 
-  function fmt(n) {
-    return '₦' + Number(n || 0).toLocaleString('en-NG', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-  }
-  function fmtShort(n) {
-    n = Number(n || 0);
-    if (n >= 1e6) return '₦' + (n/1e6).toFixed(1) + 'M';
-    if (n >= 1e3) return '₦' + (n/1e3).toFixed(0) + 'k';
-    return '₦' + n;
-  }
-  function fmtDate(d) {
-    if (!d) return '';
-    const dt = new Date(d);
-    return dt.toLocaleDateString('en-NG', { day:'2-digit', month:'short' });
-  }
+function sendTestEmail() {
+  toast('Sending test email…');
+  google.script.run.withSuccessHandler(r => toast(r.message))
+    .withFailureHandler(e => toast(e.message,'error')).sendMonthlyReminderEmail();
+}
+
+function runSetup() {
+  if (!confirm('Re-run sheet setup?')) return;
+  toast('Setting up sheets…');
+  google.script.run.withSuccessHandler(()=>toast('Setup complete!'))
+    .withFailureHandler(e=>toast(e.message,'error')).setupSheets();
+}
+
+// ── COLOUR SWATCHES ───────────────────────────────────────
+function buildColorSwatches() {
+  document.getElementById('colorSwatches').innerHTML = COLORS.map(c =>
+    `<div class="swatch ${c==='#9E9E9E'?'selected':''}" data-color="${c}"
+      style="background:${c}" onclick="selectColor('${c}',this)"></div>`
+  ).join('');
+}
+
+function selectColor(color, el) {
+  document.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('catColor').value = color;
+}
+
+// ── FORMATTERS ────────────────────────────────────────────
+function fmt(n) {
+  return '₦' + Number(n||0).toLocaleString('en-NG',{minimumFractionDigits:0,maximumFractionDigits:0});
+}
+function fmtShort(n) {
+  n = Number(n||0);
+  if (n>=1e6) return '₦'+(n/1e6).toFixed(1)+'M';
+  if (n>=1e3) return '₦'+(n/1e3).toFixed(0)+'k';
+  return '₦'+n;
+}
+function fmtDate(d) {
+  if (!d) return '';
+  return new Date(d).toLocaleDateString('en-NG',{day:'2-digit',month:'short'});
+}
+function esc(s) {
+  return String(s||'').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+}
 </script>
 </body>
 </html>
