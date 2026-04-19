@@ -204,8 +204,11 @@ function updateCategory(oldName, newName, icon, color, type) {
 function getBudgetsForMonth(month, year) {
   const sheet = _getSheet(SHEET_NAMES.BUDGET);
   const data = sheet.getDataRange().getValues();
-  return data.slice(1).filter(r => r[0] === month && Number(r[1]) === Number(year))
-    .map(r => ({ month: r[0], year: r[1], category: r[2], amount: r[3], notes: r[5] || '' }));
+  return data.slice(1).filter(r => {
+    return String(r[0]).trim() === String(month).trim() && Number(r[1]) === Number(year);
+  }).map(r => ({
+    month: r[0], year: r[1], category: r[2], amount: r[3], notes: r[5] || ''
+  }));
 }
 
 function setBudget(month, year, category, amount, notes) {
@@ -244,8 +247,21 @@ function addExpense(date, category, description, amount, paymentMethod, notes) {
 function getExpensesForMonth(month, year) {
   const sheet = _getSheet(SHEET_NAMES.EXPENSES);
   const data = sheet.getDataRange().getValues();
-  return data.slice(1).filter(r => r[1] === month && Number(r[2]) === Number(year))
-    .map((r, i) => ({ row: i + 2, date: r[0], month: r[1], year: r[2], category: r[3], description: r[4], amount: r[5], paymentMethod: r[6], notes: r[7] }));
+  return data.slice(1).filter(r => {
+    const rowMonth = String(r[1]).trim();
+    const rowYear  = Number(r[2]);
+    return rowMonth === String(month).trim() && rowYear === Number(year);
+  }).map((r, i) => ({
+    row: i + 2,
+    date: r[0],
+    month: r[1],
+    year: r[2],
+    category: r[3],
+    description: r[4],
+    amount: r[5],
+    paymentMethod: r[6],
+    notes: r[7]
+  }));
 }
 
 function deleteExpense(rowIndex) {
@@ -265,8 +281,16 @@ function updateExpense(rowIndex, date, category, description, amount, paymentMet
 function getAssetsForMonth(month, year) {
   const sheet = _getSheet(SHEET_NAMES.ASSETS);
   const data = sheet.getDataRange().getValues();
-  return data.slice(1).filter(r => r[1] === month && Number(r[2]) === Number(year))
-    .map((r, i) => ({ row: i + 2, assetName: r[3], assetClass: r[4], value: r[5], currency: r[6], notes: r[7] }));
+  return data.slice(1).filter(r => {
+    return String(r[1]).trim() === String(month).trim() && Number(r[2]) === Number(year);
+  }).map((r, i) => ({
+    row: i + 2,
+    assetName: r[3],
+    assetClass: r[4],
+    value: r[5],
+    currency: r[6],
+    notes: r[7]
+  }));
 }
 
 function getAllAssetNames() {

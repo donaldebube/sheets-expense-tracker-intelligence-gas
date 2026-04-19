@@ -253,7 +253,7 @@
     <div class="header-title">💰 Expense Tracker</div>
     <div class="header-sub" id="headerSub">Loading...</div>
   </div>
-  <button class="btn-refresh" onclick="refreshDashboard()">↻ Refresh</button>
+  <button class="btn-refresh" onclick="reloadOverview()">↻ Refresh</button>
 </div>
 
 <!-- Month Bar -->
@@ -462,15 +462,26 @@
     loadSettings();
   }
 
-  function onMonthChange() {
+    function onMonthChange() {
     currentMonth = document.getElementById('selMonth').value;
     currentYear  = parseInt(document.getElementById('selYear').value);
     document.getElementById('headerSub').textContent = `${currentMonth} ${currentYear}`;
     loadExpenses();
     loadBudgets();
     loadAssets();
+    reloadOverview(); // ← changed from loadOverview()
+    }
+
+  function reloadOverview() {
+    document.getElementById('kpiSpent').textContent   = '…';
+    document.getElementById('kpiBudget').textContent  = '…';
+    document.getElementById('kpiAssets').textContent  = '…';
+    document.getElementById('kpiSavings').textContent = '…';
+    document.getElementById('budgetBars').innerHTML   = '<div class="loading">Loading...</div>';
+    document.getElementById('trendBars').innerHTML    = '<div class="loading">Loading...</div>';
+    document.getElementById('topSpend').innerHTML     = '<div class="loading">Loading...</div>';
     loadOverview();
-  }
+    }
 
   function switchTab(name) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
