@@ -30,7 +30,7 @@
     font-family: 'DM Sans', sans-serif;
     background: var(--dark);
     color: var(--text);
-    font-size: 13px;
+    font-size: 14px; /* ↑ was 13px */
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -40,30 +40,34 @@
   /* ── Header ── */
   .header {
     background: linear-gradient(135deg, var(--mid), var(--accent2));
-    padding: 14px 16px;
+    padding: 16px 20px; /* ↑ was 14px 16px */
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
   }
-  .header-title { font-size: 15px; font-weight: 700; letter-spacing: -0.3px; }
-  .header-sub   { font-size: 10px; color: var(--muted); margin-top: 1px; }
-  .btn-refresh  { background: rgba(255,255,255,0.1); border: 1px solid var(--border); color: var(--text); padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11px; font-family: inherit; }
+  .header-title { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; } /* ↑ was 15px */
+  .header-sub   { font-size: 12px; color: var(--muted); margin-top: 2px; } /* ↑ was 10px */
+  .btn-refresh  {
+    background: rgba(255,255,255,0.1); border: 1px solid var(--border);
+    color: var(--text); padding: 7px 14px; border-radius: 6px; /* ↑ padding */
+    cursor: pointer; font-size: 13px; font-family: inherit; /* ↑ was 11px */
+  }
   .btn-refresh:hover { background: rgba(255,255,255,0.18); }
 
   /* ── Month Selector ── */
   .month-bar {
-    display: flex; gap: 8px; align-items: center;
-    padding: 10px 16px; background: var(--mid);
+    display: flex; gap: 10px; align-items: center;
+    padding: 12px 20px; background: var(--mid); /* ↑ padding */
     border-bottom: 1px solid var(--border); flex-shrink: 0;
   }
   .month-bar select, .month-bar input {
     background: var(--surface); border: 1px solid var(--border);
-    color: var(--text); padding: 5px 8px; border-radius: 6px;
-    font-family: inherit; font-size: 12px; flex: 1;
+    color: var(--text); padding: 7px 10px; border-radius: 6px; /* ↑ padding */
+    font-family: inherit; font-size: 13px; flex: 1; /* ↑ was 12px */
   }
-  .month-bar label { font-size: 11px; color: var(--muted); white-space: nowrap; }
+  .month-bar label { font-size: 13px; color: var(--muted); white-space: nowrap; } /* ↑ was 11px */
 
   /* ── Tabs ── */
   .tabs {
@@ -72,7 +76,7 @@
     flex-shrink: 0; overflow-x: auto;
   }
   .tab {
-    padding: 9px 12px; cursor: pointer; font-size: 11px; font-weight: 500;
+    padding: 11px 14px; cursor: pointer; font-size: 12px; font-weight: 500; /* ↑ padding + font */
     color: var(--muted); border-bottom: 2px solid transparent;
     white-space: nowrap; transition: all 0.15s; flex-shrink: 0;
   }
@@ -80,8 +84,8 @@
   .tab:hover:not(.active) { color: var(--text); }
 
   /* ── Content ── */
-  .content { flex: 1; overflow-y: auto; padding: 14px 16px; }
-  .content::-webkit-scrollbar { width: 4px; }
+  .content { flex: 1; overflow-y: auto; padding: 16px 20px; } /* ↑ was 14px 16px */
+  .content::-webkit-scrollbar { width: 5px; }
   .content::-webkit-scrollbar-track { background: transparent; }
   .content::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 4px; }
 
@@ -89,27 +93,30 @@
   .panel.active { display: block; }
 
   /* ── Form Elements ── */
-  .field { margin-bottom: 12px; }
-  .field label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 4px; font-weight: 500; }
+  .field { margin-bottom: 14px; } /* ↑ was 12px */
+  .field label {
+    display: block; font-size: 12px; color: var(--muted); /* ↑ was 11px */
+    margin-bottom: 6px; font-weight: 500; /* ↑ was 4px */
+  }
   .field input, .field select, .field textarea {
     width: 100%; background: var(--surface); border: 1px solid var(--border);
-    color: var(--text); padding: 8px 10px; border-radius: var(--radius);
-    font-family: inherit; font-size: 12px; transition: border 0.15s;
+    color: var(--text); padding: 10px 12px; border-radius: var(--radius); /* ↑ was 8px 10px */
+    font-family: inherit; font-size: 13px; transition: border 0.15s; /* ↑ was 12px */
   }
   .field input:focus, .field select:focus, .field textarea:focus {
     outline: none; border-color: var(--accent);
   }
-  .field textarea { resize: vertical; min-height: 52px; }
+  .field textarea { resize: vertical; min-height: 60px; } /* ↑ was 52px */
   .field select option { background: var(--dark); }
 
-  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } /* ↑ was 8px */
+  .row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
 
   /* ── Buttons ── */
   .btn {
-    display: inline-flex; align-items: center; gap: 5px; justify-content: center;
-    padding: 8px 14px; border-radius: var(--radius); font-family: inherit;
-    font-size: 12px; font-weight: 600; cursor: pointer; border: none;
+    display: inline-flex; align-items: center; gap: 6px; justify-content: center;
+    padding: 10px 16px; border-radius: var(--radius); font-family: inherit; /* ↑ was 8px 14px */
+    font-size: 13px; font-weight: 600; cursor: pointer; border: none; /* ↑ was 12px */
     transition: all 0.15s; width: 100%; margin-top: 4px;
   }
   .btn-primary   { background: var(--accent); color: white; }
@@ -120,25 +127,25 @@
   .btn-danger    { background: transparent; color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
   .btn-danger:hover  { background: rgba(248,113,113,0.1); }
   .btn-success   { background: #166534; color: var(--green); border: 1px solid rgba(74,222,128,0.3); }
-  .btn-sm { padding: 4px 8px; font-size: 11px; width: auto; margin-top: 0; }
+  .btn-sm { padding: 5px 10px; font-size: 12px; width: auto; margin-top: 0; } /* ↑ was 4px 8px / 11px */
 
-  .btn-row { display: flex; gap: 8px; margin-top: 8px; }
+  .btn-row { display: flex; gap: 10px; margin-top: 10px; } /* ↑ gap + margin */
 
   /* ── Cards / Items ── */
   .card {
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 12px; margin-bottom: 8px;
+    border-radius: var(--radius); padding: 14px; margin-bottom: 10px; /* ↑ was 12px / 8px */
   }
-  .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
-  .card-title { font-weight: 600; font-size: 13px; }
-  .card-sub   { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .card-title { font-weight: 600; font-size: 14px; } /* ↑ was 13px */
+  .card-sub   { font-size: 12px; color: var(--muted); margin-top: 2px; } /* ↑ was 11px */
   .card-actions { display: flex; gap: 6px; }
 
   /* ── KPI Mini Cards ── */
-  .kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px; }
-  .kpi-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-  .kpi-value { font-size: 16px; font-weight: 700; font-family: 'DM Mono', monospace; }
+  .kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; } /* ↑ */
+  .kpi { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; } /* ↑ was 10px */
+  .kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; } /* ↑ was 10px / 4px */
+  .kpi-value { font-size: 20px; font-weight: 700; font-family: 'DM Mono', monospace; } /* ↑ was 16px */
   .kpi-value.green  { color: var(--green); }
   .kpi-value.amber  { color: var(--amber); }
   .kpi-value.red    { color: #f87171; }
@@ -147,25 +154,25 @@
 
   /* ── Progress Bar ── */
   .progress-wrap { margin-top: 6px; }
-  .progress-label { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-bottom: 3px; }
-  .progress-bar   { height: 5px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .progress-bar   { height: 6px; background: var(--surface2); border-radius: 99px; overflow: hidden; } /* ↑ was 5px */
   .progress-fill  { height: 100%; border-radius: 99px; transition: width 0.4s; }
   .fill-green  { background: var(--green); }
   .fill-amber  { background: var(--amber); }
   .fill-red    { background: #f87171; }
 
   /* ── Tag/Badge ── */
-  .badge { display: inline-block; padding: 2px 7px; border-radius: 99px; font-size: 10px; font-weight: 600; }
+  .badge { display: inline-block; padding: 3px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; } /* ↑ was 2px 7px / 10px */
   .badge-fixed { background: rgba(96,165,250,0.15); color: var(--blue); }
   .badge-variable { background: rgba(251,191,36,0.15); color: var(--amber); }
   .badge-discretionary { background: rgba(167,139,250,0.15); color: var(--purple); }
 
   /* ── Toast ── */
   #toast {
-    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%) translateY(60px);
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(60px);
     background: var(--surface2); border: 1px solid var(--border);
-    color: var(--text); padding: 8px 16px; border-radius: 99px;
-    font-size: 12px; font-weight: 500; z-index: 9999;
+    color: var(--text); padding: 10px 20px; border-radius: 99px; /* ↑ was 8px 16px */
+    font-size: 13px; font-weight: 500; z-index: 9999; /* ↑ was 12px */
     transition: transform 0.3s, opacity 0.3s; opacity: 0;
     white-space: nowrap;
   }
@@ -175,66 +182,66 @@
 
   /* ── Section label ── */
   .section-label {
-    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-    color: var(--muted); margin: 14px 0 8px; padding-bottom: 4px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; /* ↑ was 10px */
+    color: var(--muted); margin: 16px 0 10px; padding-bottom: 6px; /* ↑ margins */
     border-bottom: 1px solid var(--border);
   }
 
   /* ── Expense list ── */
   .expense-item {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 10px; background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; margin-bottom: 6px;
+    padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); /* ↑ was 8px 10px */
+    border-radius: 8px; margin-bottom: 8px; /* ↑ was 6px */
   }
   .expense-item:hover { background: var(--surface2); }
   .expense-left { flex: 1; }
-  .expense-cat  { font-size: 12px; font-weight: 600; }
-  .expense-desc { font-size: 11px; color: var(--muted); }
-  .expense-amt  { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; color: #f87171; margin-right: 8px; }
-  .expense-del  { background: none; border: none; color: var(--muted); cursor: pointer; padding: 3px; font-size: 14px; }
+  .expense-cat  { font-size: 13px; font-weight: 600; } /* ↑ was 12px */
+  .expense-desc { font-size: 12px; color: var(--muted); margin-top: 2px; } /* ↑ was 11px */
+  .expense-amt  { font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 600; color: #f87171; margin-right: 10px; } /* ↑ was 13px */
+  .expense-del  { background: none; border: none; color: var(--muted); cursor: pointer; padding: 4px; font-size: 16px; } /* ↑ */
   .expense-del:hover { color: #f87171; }
 
   /* ── Category item ── */
   .cat-item {
-    display: flex; align-items: center; gap: 8px;
-    padding: 8px 10px; background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 10px; /* ↑ was 8px */
+    padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); /* ↑ was 8px 10px */
+    border-radius: 8px; margin-bottom: 8px; /* ↑ was 6px */
   }
-  .cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .cat-name { flex: 1; font-size: 12px; font-weight: 500; }
+  .cat-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; } /* ↑ was 10px */
+  .cat-name { flex: 1; font-size: 13px; font-weight: 500; } /* ↑ was 12px */
   .cat-actions { display: flex; gap: 4px; }
 
   /* ── Asset item ── */
   .asset-item {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 10px; background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; margin-bottom: 6px;
+    padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); /* ↑ */
+    border-radius: 8px; margin-bottom: 8px;
   }
-  .asset-name  { font-size: 12px; font-weight: 600; }
-  .asset-class { font-size: 10px; color: var(--muted); }
-  .asset-value { font-family: 'DM Mono', monospace; font-size: 13px; font-weight: 600; color: var(--green); }
+  .asset-name  { font-size: 13px; font-weight: 600; } /* ↑ was 12px */
+  .asset-class { font-size: 11px; color: var(--muted); margin-top: 2px; } /* ↑ was 10px */
+  .asset-value { font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 600; color: var(--green); } /* ↑ was 13px */
 
   /* ── Chart bars ── */
-  .chart-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-  .chart-bar-label { width: 70px; font-size: 10px; color: var(--muted); text-align: right; flex-shrink: 0; }
-  .chart-bar-wrap  { flex: 1; height: 18px; background: var(--surface2); border-radius: 4px; overflow: hidden; position: relative; }
-  .chart-bar-fill  { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 6px; font-size: 10px; font-weight: 600; transition: width 0.5s; }
-  .chart-bar-val   { width: 70px; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-align: right; }
+  .chart-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; } /* ↑ was 8px / 6px */
+  .chart-bar-label { width: 80px; font-size: 11px; color: var(--muted); text-align: right; flex-shrink: 0; } /* ↑ was 70px / 10px */
+  .chart-bar-wrap  { flex: 1; height: 22px; background: var(--surface2); border-radius: 4px; overflow: hidden; position: relative; } /* ↑ was 18px */
+  .chart-bar-fill  { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600; transition: width 0.5s; } /* ↑ */
+  .chart-bar-val   { width: 75px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); text-align: right; } /* ↑ was 70px / 10px */
 
   /* ── Empty state ── */
-  .empty { text-align: center; padding: 30px 20px; color: var(--muted); }
-  .empty-icon { font-size: 32px; margin-bottom: 8px; }
-  .empty-text { font-size: 12px; }
+  .empty { text-align: center; padding: 36px 20px; color: var(--muted); } /* ↑ was 30px */
+  .empty-icon { font-size: 38px; margin-bottom: 10px; } /* ↑ was 32px / 8px */
+  .empty-text { font-size: 13px; } /* ↑ was 12px */
 
   /* ── Loading ── */
-  .loading { text-align: center; padding: 20px; color: var(--muted); font-size: 12px; }
+  .loading { text-align: center; padding: 24px; color: var(--muted); font-size: 13px; } /* ↑ */
 
   /* Divider */
-  .divider { border: none; border-top: 1px solid var(--border); margin: 12px 0; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; } /* ↑ was 12px */
 
   /* Color swatch */
-  .color-swatch { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
-  .swatch { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; }
+  .color-swatch { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; } /* ↑ was 6px / 4px */
+  .swatch { width: 26px; height: 26px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; } /* ↑ was 22px */
   .swatch.selected { border-color: white; transform: scale(1.2); }
 </style>
 </head>
@@ -258,7 +265,7 @@
     <option>July</option><option>August</option><option>September</option>
     <option>October</option><option>November</option><option>December</option>
   </select>
-  <input type="number" id="selYear" value="2025" min="2020" max="2030" style="width:70px" onchange="onMonthChange()">
+  <input type="number" id="selYear" value="2025" min="2020" max="2030" style="width:76px" onchange="onMonthChange()">
 </div>
 
 <!-- Tabs -->
@@ -292,7 +299,7 @@
     <div class="section-label">Top Spending Areas</div>
     <div id="topSpend"></div>
 
-    <button class="btn btn-secondary" onclick="refreshDashboard()" style="margin-top:8px">↻ Refresh Dashboard Sheet</button>
+    <button class="btn btn-secondary" onclick="refreshDashboard()" style="margin-top:10px">↻ Refresh Dashboard Sheet</button>
   </div>
 
   <!-- ── Expense Panel ── -->
@@ -319,7 +326,7 @@
     </div>
     <button class="btn btn-primary" onclick="addExpense()">➕ Log Expense</button>
 
-    <div class="section-label" style="margin-top:16px">This Month's Expenses</div>
+    <div class="section-label" style="margin-top:18px">This Month's Expenses</div>
     <div id="expenseList"><div class="loading">Loading...</div></div>
   </div>
 
@@ -339,7 +346,7 @@
     </div>
     <button class="btn btn-primary" onclick="setBudget()">💾 Save Budget</button>
 
-    <div class="section-label" style="margin-top:16px">Current Budgets</div>
+    <div class="section-label" style="margin-top:18px">Current Budgets</div>
     <div id="budgetList"><div class="loading">Loading...</div></div>
   </div>
 
@@ -363,7 +370,7 @@
     </div>
     <button class="btn btn-primary" onclick="addCategory()">➕ Add Category</button>
 
-    <div class="section-label" style="margin-top:16px">All Categories</div>
+    <div class="section-label" style="margin-top:18px">All Categories</div>
     <div id="categoryList"><div class="loading">Loading...</div></div>
   </div>
 
@@ -393,7 +400,7 @@
     </div>
     <button class="btn btn-primary" onclick="upsertAsset()">💾 Save Asset</button>
 
-    <div class="section-label" style="margin-top:16px">Assets This Month</div>
+    <div class="section-label" style="margin-top:18px">Assets This Month</div>
     <div id="assetList"><div class="loading">Loading...</div></div>
   </div>
 
@@ -413,7 +420,7 @@
     <button class="btn btn-primary" onclick="saveSettings()">💾 Save Settings</button>
     <hr class="divider">
     <div class="section-label">Email Reminders</div>
-    <p style="font-size:12px; color:var(--muted); margin-bottom:10px;">Schedule a monthly email reminder to set your budget for the next month.</p>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:12px; line-height:1.6;">Schedule a monthly email reminder to set your budget for the next month.</p>
     <div class="btn-row">
       <button class="btn btn-secondary" onclick="scheduleReminder()" style="flex:1">📅 Schedule Auto-Reminder</button>
       <button class="btn btn-ghost" onclick="sendTestEmail()" style="flex:1">📧 Send Test Email</button>
@@ -434,7 +441,6 @@
 
   let currentMonth, currentYear, categories = [], dashboardData = null;
 
-  // ── Init ──────────────────────────────────────────────
   window.onload = function() {
     const now = new Date();
     currentMonth = MONTHS[now.getMonth()];
@@ -442,10 +448,7 @@
     document.getElementById('selMonth').value = currentMonth;
     document.getElementById('selYear').value  = currentYear;
     document.getElementById('headerSub').textContent = `${currentMonth} ${currentYear}`;
-
-    // Set today as default expense date
     document.getElementById('expDate').value = now.toISOString().split('T')[0];
-
     buildColorSwatches();
     loadAll();
   };
@@ -469,16 +472,14 @@
     loadOverview();
   }
 
-  // ── Tab Switching ────────────────────────────────────
   function switchTab(name) {
-    document.querySelectorAll('.tab').forEach((t,i) => t.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     const tabs = ['overview','expense','budget','categories','assets','settings'];
     document.querySelectorAll('.tab')[tabs.indexOf(name)].classList.add('active');
     document.getElementById('panel-' + name).classList.add('active');
   }
 
-  // ── Toast ─────────────────────────────────────────────
   function toast(msg, type = 'success') {
     const t = document.getElementById('toast');
     t.textContent = msg;
@@ -486,46 +487,37 @@
     setTimeout(() => { t.className = ''; }, 2800);
   }
 
-  // ── Overview ──────────────────────────────────────────
   function loadOverview() {
     google.script.run
-      .withSuccessHandler(data => {
-        dashboardData = data;
-        renderOverview(data);
-      })
+      .withSuccessHandler(data => { dashboardData = data; renderOverview(data); })
       .withFailureHandler(e => toast(e.message, 'error'))
       .getDashboardData(currentMonth, currentYear);
   }
 
   function renderOverview(d) {
-    document.getElementById('kpiSpent').textContent    = fmt(d.totalSpent);
-    document.getElementById('kpiBudget').textContent   = fmt(d.totalBudgeted);
-    document.getElementById('kpiAssets').textContent   = fmt(d.totalAssets);
-    document.getElementById('kpiSavings').textContent  = d.savingsRate + '%';
+    document.getElementById('kpiSpent').textContent   = fmt(d.totalSpent);
+    document.getElementById('kpiBudget').textContent  = fmt(d.totalBudgeted);
+    document.getElementById('kpiAssets').textContent  = fmt(d.totalAssets);
+    document.getElementById('kpiSavings').textContent = d.savingsRate + '%';
 
     const savEl = document.getElementById('kpiSavings');
     savEl.className = 'kpi-value ' + (parseFloat(d.savingsRate) >= 20 ? 'green' : parseFloat(d.savingsRate) >= 10 ? 'amber' : 'red');
 
-    // Budget vs Actual bars
     const bbEl = document.getElementById('budgetBars');
     if (!d.breakdown.length) { bbEl.innerHTML = '<div class="empty"><div class="empty-text">No budget or expenses set.</div></div>'; }
     else {
-      const maxAmt = Math.max(...d.breakdown.map(c => Math.max(c.spent, c.budgeted)), 1);
       bbEl.innerHTML = d.breakdown.map(c => {
         const pct = Math.min(100, (c.spent / Math.max(c.budgeted, c.spent, 1)) * 100);
         const fillClass = c.budgeted === 0 ? 'fill-amber' : c.spent > c.budgeted ? 'fill-red' : 'fill-green';
         const status = c.budgeted > 0 && c.spent > c.budgeted ? ' 🚨' : '';
         return `<div class="chart-bar-row">
-          <div class="chart-bar-label">${c.icon} ${c.name.slice(0,8)}${status}</div>
-          <div class="chart-bar-wrap">
-            <div class="chart-bar-fill ${fillClass}" style="width:${pct}%"></div>
-          </div>
+          <div class="chart-bar-label">${c.icon} ${c.name.slice(0,9)}${status}</div>
+          <div class="chart-bar-wrap"><div class="chart-bar-fill ${fillClass}" style="width:${pct}%"></div></div>
           <div class="chart-bar-val">${fmtShort(c.spent)}</div>
         </div>`;
       }).join('');
     }
 
-    // Trend bars
     const tEl = document.getElementById('trendBars');
     const maxT = Math.max(...d.trend.map(t => t.total), 1);
     tEl.innerHTML = d.trend.map(t => {
@@ -537,7 +529,6 @@
       </div>`;
     }).join('');
 
-    // Top spends
     const tsEl = document.getElementById('topSpend');
     if (!d.topSpends.length) { tsEl.innerHTML = '<div class="empty"><div class="empty-text">No expenses this month.</div></div>'; }
     else {
@@ -546,7 +537,7 @@
         const pct = Math.round((s.amount / maxS) * 100);
         const medals = ['🥇','🥈','🥉','4️⃣','5️⃣'];
         return `<div class="chart-bar-row">
-          <div class="chart-bar-label">${medals[i]} ${s.category.slice(0,7)}</div>
+          <div class="chart-bar-label">${medals[i]} ${s.category.slice(0,8)}</div>
           <div class="chart-bar-wrap"><div class="chart-bar-fill fill-red" style="width:${pct}%"></div></div>
           <div class="chart-bar-val">${fmtShort(s.amount)}</div>
         </div>`;
@@ -555,12 +546,13 @@
   }
 
   function refreshDashboard() {
-    toast('Refreshing dashboard sheet…', 'success');
-    google.script.run.withSuccessHandler(() => { toast('Dashboard refreshed!'); loadOverview(); })
-      .withFailureHandler(e => toast(e.message, 'error')).refreshDashboard();
+    toast('Refreshing dashboard sheet…');
+    google.script.run
+      .withSuccessHandler(() => { toast('Dashboard refreshed!'); loadOverview(); })
+      .withFailureHandler(e => toast(e.message, 'error'))
+      .refreshDashboard();
   }
 
-  // ── Expenses ──────────────────────────────────────────
   function loadExpenses() {
     google.script.run
       .withSuccessHandler(data => renderExpenses(data))
@@ -572,7 +564,7 @@
     const el = document.getElementById('expenseList');
     if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">🧾</div><div class="empty-text">No expenses yet.</div></div>'; return; }
     const total = list.reduce((s,e) => s + Number(e.amount), 0);
-    el.innerHTML = `<div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Total: <strong style="color:var(--text)">${fmt(total)}</strong> · ${list.length} entries</div>` +
+    el.innerHTML = `<div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Total: <strong style="color:var(--text)">${fmt(total)}</strong> · ${list.length} entries</div>` +
       list.sort((a,b) => new Date(b.date) - new Date(a.date)).map(e =>
         `<div class="expense-item">
           <div class="expense-left">
@@ -612,7 +604,6 @@
     document.getElementById('expCat').value    = '';
   }
 
-  // ── Budget ────────────────────────────────────────────
   function loadBudgets() {
     google.script.run
       .withSuccessHandler(data => renderBudgets(data))
@@ -631,7 +622,7 @@
             <button class="btn btn-danger btn-sm" onclick="deleteBudget('${b.category}')">✕</button>
           </div>
         </div>
-        <div style="font-family:'DM Mono',monospace;font-size:15px;font-weight:700;color:var(--blue)">${fmt(b.amount)}</div>
+        <div style="font-family:'DM Mono',monospace;font-size:17px;font-weight:700;color:var(--blue)">${fmt(b.amount)}</div>
       </div>`
     ).join('');
   }
@@ -654,7 +645,6 @@
       .deleteBudget(currentMonth, currentYear, cat);
   }
 
-  // ── Categories ────────────────────────────────────────
   function loadCategories() {
     google.script.run
       .withSuccessHandler(data => { categories = data; renderCategories(data); populateCategoryDropdowns(data); })
@@ -668,7 +658,7 @@
     el.innerHTML = list.map(c =>
       `<div class="cat-item">
         <div class="cat-dot" style="background:${c.color}"></div>
-        <div style="font-size:16px">${c.icon}</div>
+        <div style="font-size:18px">${c.icon}</div>
         <div class="cat-name">${c.name}</div>
         <span class="badge badge-${c.type.toLowerCase()}">${c.type}</span>
         <div class="cat-actions">
@@ -707,13 +697,11 @@
       .deleteCategory(name);
   }
 
-  // ── Assets ────────────────────────────────────────────
   function loadAssets() {
     google.script.run
       .withSuccessHandler(data => renderAssets(data))
       .withFailureHandler(e => toast(e.message, 'error'))
       .getAssetsForMonth(currentMonth, currentYear);
-
     google.script.run.withSuccessHandler(names => {
       const dl = document.getElementById('assetNameList');
       dl.innerHTML = names.map(n => `<option value="${n}">`).join('');
@@ -724,14 +712,14 @@
     const el = document.getElementById('assetList');
     if (!list.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">💼</div><div class="empty-text">No assets recorded for this month.</div></div>'; return; }
     const total = list.reduce((s,a) => s + Number(a.value), 0);
-    el.innerHTML = `<div style="font-size:11px;color:var(--muted);margin-bottom:8px;">Portfolio: <strong style="color:var(--green)">${fmt(total)}</strong></div>` +
+    el.innerHTML = `<div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Portfolio: <strong style="color:var(--green)">${fmt(total)}</strong></div>` +
       list.map(a =>
         `<div class="asset-item">
           <div>
             <div class="asset-name">${a.assetName}</div>
             <div class="asset-class">${a.assetClass} · ${a.currency}</div>
           </div>
-          <div style="display:flex;align-items:center;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px">
             <div class="asset-value">${fmt(a.value)}</div>
             <button class="expense-del" onclick="deleteAsset(${a.row})" title="Delete">✕</button>
           </div>
@@ -760,13 +748,12 @@
       .deleteAsset(row);
   }
 
-  // ── Settings ──────────────────────────────────────────
   function loadSettings() {
     google.script.run.withSuccessHandler(s => {
-      document.getElementById('setEmail').value   = s['Email'] || '';
-      document.getElementById('setCurrency').value= s['Currency'] || '₦';
-      document.getElementById('setRemDay').value  = s['Reminder Day'] || '25';
-      document.getElementById('setName').value    = s['Name'] || '';
+      document.getElementById('setEmail').value    = s['Email'] || '';
+      document.getElementById('setCurrency').value = s['Currency'] || '₦';
+      document.getElementById('setRemDay').value   = s['Reminder Day'] || '25';
+      document.getElementById('setName').value     = s['Name'] || '';
     }).withFailureHandler(e => {}).getSettings();
   }
 
@@ -806,7 +793,6 @@
       .setupSheets();
   }
 
-  // ── Color Swatches ────────────────────────────────────
   function buildColorSwatches() {
     const el = document.getElementById('colorSwatches');
     el.innerHTML = COLORS.map(c =>
@@ -820,7 +806,6 @@
     document.getElementById('catColor').value = color;
   }
 
-  // ── Formatters ────────────────────────────────────────
   function fmt(n) {
     return '₦' + Number(n || 0).toLocaleString('en-NG', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
   }
