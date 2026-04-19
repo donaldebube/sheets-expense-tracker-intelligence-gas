@@ -1,0 +1,5 @@
+{
+  "scriptId": "YOUR_SCRIPT_ID_HERE",
+  "rootDir": "./src",
+  "parentId": "YOUR_PARENT_ID_HERE"
+}
